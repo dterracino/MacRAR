@@ -80,4 +80,9 @@
     <None Include="Info.plist" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Mac\Xamarin.Mac.CSharp.targets" />
+  <ItemGroup>
+    <BundleResource Include="Resources\icon.icns" />
+    <BundleResource Include="Resources\package_system.png" />
+    <BundleResource Include="Resources\Open-Folder-Full.png" />
+  </ItemGroup>
 </Project>

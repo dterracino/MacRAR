@@ -20,5 +20,13 @@ namespace MacRAR
 		{
 			base.AwakeFromNib ();
 		}
+
+
+		 partial void TrashDocument (Foundation.NSObject sender) {
+
+			//documentEditor.Value = "";
+		}
+
+
 	}
 }

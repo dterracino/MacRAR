@@ -14,4 +14,10 @@ Global
 		{BCB731F9-C568-4173-B292-6292845FC118}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BCB731F9-C568-4173-B292-6292845FC118}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		Policies = $0
+		$0.DotNetNamingPolicy = $1
+		$1.DirectoryNamespaceAssociation = None
+		$1.ResourceNamePolicy = FileFormatDefault
+	EndGlobalSection
 EndGlobal
