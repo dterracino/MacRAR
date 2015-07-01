@@ -71,10 +71,16 @@
     <Compile Include="AppDelegate.designer.cs">
       <DependentUpon>AppDelegate.cs</DependentUpon>
     </Compile>
+    <Compile Include="ConfigWindow.cs" />
+    <Compile Include="ConfigWindow.designer.cs">
+      <DependentUpon>ConfigWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ConfigWindowController.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="MainWindow.xib" />
     <InterfaceDefinition Include="MainMenu.xib" />
+    <InterfaceDefinition Include="ConfigWindow.xib" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
@@ -82,7 +88,6 @@
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Mac\Xamarin.Mac.CSharp.targets" />
   <ItemGroup>
     <BundleResource Include="Resources\icon.icns" />
-    <BundleResource Include="Resources\package_system.png" />
-    <BundleResource Include="Resources\Open-Folder-Full.png" />
+    <BundleResource Include="Resources\gears.png" />
   </ItemGroup>
 </Project>

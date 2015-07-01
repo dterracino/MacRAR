@@ -21,12 +21,10 @@ namespace MacRAR
 			base.AwakeFromNib ();
 		}
 
-
-		 partial void TrashDocument (Foundation.NSObject sender) {
-
-			//documentEditor.Value = "";
+		partial void tb_ActConfig (Foundation.NSObject sender)
+		{
+			ConfigWindowController sheet = new ConfigWindowController();
+			sheet.ShowConfigWindow (this);
 		}
-
-
 	}
 }

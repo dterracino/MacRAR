@@ -12,9 +12,8 @@ namespace MacRAR
 	[Register ("MainWindow")]
 	partial class MainWindow
 	{
-
-		[Action ("TrashDocument:")]
-		partial void TrashDocument (Foundation.NSObject sender);
+		[Action ("tb_ActConfig:")]
+		partial void tb_ActConfig (Foundation.NSObject sender);
 		
 		void ReleaseDesignerOutlets ()
 		{
