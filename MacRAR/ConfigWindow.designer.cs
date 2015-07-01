@@ -32,9 +32,6 @@ namespace MacRAR
 
 		[Action ("btn_Confirma:")]
 		partial void btn_Confirma (Foundation.NSObject sender);
-
-		[Action ("x:")]
-		partial void x (Foundation.NSObject sender);
 		
 		void ReleaseDesignerOutlets ()
 		{

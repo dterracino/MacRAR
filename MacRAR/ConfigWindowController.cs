@@ -30,6 +30,10 @@ namespace MacRAR
 		public ConfigWindowController ()
 		{
 			NSBundle.LoadNib ("ConfigWindow", this);
+			clsIOPrefs ioPrefs = new clsIOPrefs ();
+			this.txtRAR = ioPrefs.GetStringValue ("CaminhoRAR");
+			this.txtUNRAR = ioPrefs.GetStringValue ("CaminhoUNRAR");
+			ioPrefs = null;
 		}
 
 		public void ShowConfigWindow(NSWindow inWindow) {
@@ -48,21 +52,23 @@ namespace MacRAR
 
 		[Export ("btn_Confirma:")]
 		void btn_Confirma (NSObject sender) {
+			clsIOPrefs ioPrefs = new clsIOPrefs ();
+			ioPrefs.SetStringValue("CaminhoRAR",this.txtRAR );
+			ioPrefs.SetStringValue ("CaminhoUNRAR", this.txtUNRAR);
+			ioPrefs = null;
 			CloseConfigWindow();
 		}
-			
+
 		[Export ("btn_CaminhoRAR:")]
 		void btn_CaminhoRAR (NSObject sender)
 		{
-			string ret = this.OpenDialog ();
-			this.txtRAR = ret;
-
+			this.txtRAR = this.OpenDialog ();
 		}
 
 		[Export ("btn_CaminhoUNRAR:")]
 		void btn_CaminhoUNRAR (NSObject sender)
 		{
-
+			this.txtUNRAR = this.OpenDialog ();
 		}
 
 		string OpenDialog()
@@ -83,7 +89,7 @@ namespace MacRAR
 			return path;
 
 		}
-			
+
 	}
 }
 
