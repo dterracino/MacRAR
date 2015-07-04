@@ -17,22 +17,12 @@ namespace MacRAR
 		[Outlet]
 		public NSTextField txt_UNRAR { get; set; }
 
-		public string txtRAR {
-			get { return txt_RAR.StringValue; }
-			set { txt_RAR.StringValue = value; }
-		}
-
-		public string txtUNRAR {
-			get { return txt_UNRAR.StringValue; }
-			set { txt_UNRAR.StringValue = value; }
-		}
-
 		public ConfigWindowController ()
 		{
 			NSBundle.LoadNib ("ConfigWindow", this);
 			clsIOPrefs ioPrefs = new clsIOPrefs ();
-			this.txtRAR = ioPrefs.GetStringValue ("CaminhoRAR");
-			this.txtUNRAR = ioPrefs.GetStringValue ("CaminhoUNRAR");
+			this.txt_RAR.StringValue  = ioPrefs.GetStringValue ("CaminhoRAR");
+			this.txt_UNRAR.StringValue  = ioPrefs.GetStringValue ("CaminhoUNRAR");
 			ioPrefs = null;
 		}
 
@@ -53,8 +43,8 @@ namespace MacRAR
 		[Export ("btn_Confirma:")]
 		void btn_Confirma (NSObject sender) {
 			clsIOPrefs ioPrefs = new clsIOPrefs ();
-			ioPrefs.SetStringValue("CaminhoRAR",this.txtRAR );
-			ioPrefs.SetStringValue ("CaminhoUNRAR", this.txtUNRAR);
+			ioPrefs.SetStringValue("CaminhoRAR",this.txt_RAR.StringValue);
+			ioPrefs.SetStringValue ("CaminhoUNRAR", this.txt_UNRAR.StringValue);
 			ioPrefs = null;
 			CloseConfigWindow();
 		}
@@ -62,34 +52,19 @@ namespace MacRAR
 		[Export ("btn_CaminhoRAR:")]
 		void btn_CaminhoRAR (NSObject sender)
 		{
-			this.txtRAR = this.OpenDialog ();
+			clsIOPrefs ioPrefs = new clsIOPrefs ();
+			this.txt_RAR.StringValue = ioPrefs.OpenFileDialog (Window);
+			ioPrefs = null;
 		}
 
 		[Export ("btn_CaminhoUNRAR:")]
 		void btn_CaminhoUNRAR (NSObject sender)
 		{
-			this.txtUNRAR = this.OpenDialog ();
+			clsIOPrefs ioPrefs = new clsIOPrefs ();
+			this.txt_UNRAR.StringValue = ioPrefs.OpenFileDialog (Window);
+			ioPrefs = null;
 		}
-
-		string OpenDialog()
-		{
-			string path = string.Empty;
-			NSOpenPanel dlg = NSOpenPanel.OpenPanel;
-			dlg.CanChooseFiles = true;
-			dlg.CanChooseDirectories = false;
-			if (dlg.RunModal () == 1)
-			{
-				NSUrl url = dlg.Urls [0];
-
-				if (url != null) {
-					path = url.Path;
-				}
-			}
-
-			return path;
-
-		}
-
+			
 	}
 }
 

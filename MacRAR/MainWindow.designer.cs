@@ -12,8 +12,14 @@ namespace MacRAR
 	[Register ("MainWindow")]
 	partial class MainWindow
 	{
+		[Action ("tb_actAbrir:")]
+		partial void tb_actAbrir (Foundation.NSObject sender);
+
 		[Action ("tb_ActConfig:")]
 		partial void tb_ActConfig (Foundation.NSObject sender);
+
+		[Action ("tb_ActSair:")]
+		partial void tb_ActSair (Foundation.NSObject sender);
 		
 		void ReleaseDesignerOutlets ()
 		{

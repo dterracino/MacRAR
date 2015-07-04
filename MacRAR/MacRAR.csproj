@@ -77,6 +77,7 @@
     </Compile>
     <Compile Include="ConfigWindowController.cs" />
     <Compile Include="clsIOPrefs.cs" />
+    <Compile Include="clsOpenRAR.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="MainWindow.xib" />
@@ -90,5 +91,7 @@
   <ItemGroup>
     <BundleResource Include="Resources\icon.icns" />
     <BundleResource Include="Resources\gears.png" />
+    <BundleResource Include="Resources\OpenFolder.png" />
+    <BundleResource Include="Resources\exit.png" />
   </ItemGroup>
 </Project>

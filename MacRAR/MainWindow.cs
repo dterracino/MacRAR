@@ -19,6 +19,7 @@ namespace MacRAR
 		public override void AwakeFromNib ()
 		{
 			base.AwakeFromNib ();
+		
 		}
 
 		partial void tb_ActConfig (Foundation.NSObject sender)
@@ -26,5 +27,19 @@ namespace MacRAR
 			ConfigWindowController sheet = new ConfigWindowController();
 			sheet.ShowConfigWindow (this);
 		}
+
+		partial void tb_actAbrir (Foundation.NSObject sender)
+		{
+			clsOpenRAR oRAR = new clsOpenRAR ();
+			oRAR.OpenRAR (this);
+			oRAR = null;
+		}
+
+		partial void tb_ActSair (Foundation.NSObject sender)
+		{
+			PerformClose (this);
+
+		}
+
 	}
 }
