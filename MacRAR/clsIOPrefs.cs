@@ -39,31 +39,33 @@ namespace MacRAR
 			string[] FileTypes = { "" };
 			return this.OpenFileDialog (window, FileTypes);
 		}
-			
-
 
 		public string OpenFileDialog (NSWindow window, string[] FileTypes)
 		{
 			string path = string.Empty;
-			NSOpenPanel dlg = NSOpenPanel.OpenPanel;
-			//dlg.Prompt = "Selecione um Arquivo";
-			dlg.Title = "Selecione";
-			dlg.CanChooseFiles = true;
-			dlg.CanChooseDirectories = false;
-			dlg.AllowedFileTypes = FileTypes; 
-			dlg.ReleasedWhenClosed = true;
-			nint retDlg = dlg.RunModal ();
-			if (retDlg == 1) {
-				NSUrl url = dlg.Urls [0];
-				if (url != null) {
-					path = url.Path;
+			try {
+				NSOpenPanel dlg = NSOpenPanel.OpenPanel;
+				//dlg.Prompt = "Selecione um Arquivo";
+				dlg.Title = "Selecione";
+				dlg.CanChooseFiles = true;
+				dlg.CanChooseDirectories = false;
+				dlg.AllowedFileTypes = FileTypes; 
+				dlg.ReleasedWhenClosed = true;
+				nint retDlg = dlg.RunModal ();
+				if (retDlg == 1) {
+					NSUrl url = dlg.Urls [0];
+					if (url != null) {
+						path = url.Path;
+					}
 				}
+				NSDate DateLoop = new NSDate ();
+				DateLoop = DateLoop.AddSeconds (0.1);
+				NSRunLoop.Current.RunUntil(DateLoop );
+				dlg.Dispose ();
+				dlg = null;
+			} catch (Exception) {
+				//
 			}
-			NSDate DateLoop = new NSDate ();
-			DateLoop = DateLoop.AddSeconds (0.1);
-			NSRunLoop.Current.RunUntil(DateLoop );
-			dlg.Dispose ();
-			dlg = null;
 			return path;
 		}
 	}

@@ -5,6 +5,28 @@ using AppKit;
 
 namespace MacRAR
 {
+
+	public class TestDelegate : NSWindowDelegate
+	{
+		public override bool WindowShouldClose (NSObject sender)
+		{
+
+			var alert = new NSAlert () {
+				AlertStyle = NSAlertStyle.Warning,
+				InformativeText = "Deseja realmente encerrar o MacRAR ?",
+				MessageText = "Encerrar MacRAR",
+			};
+			alert.AddButton ("Não");
+			alert.AddButton ("Sim");
+			var result = alert.RunModal ();
+			if (result == 1001) {
+				return true;
+			} else {
+				return false;
+			}
+		}
+	}
+
 	public partial class MainWindow : NSWindow
 	{
 		public MainWindow (IntPtr handle) : base (handle)
@@ -20,6 +42,9 @@ namespace MacRAR
 		{
 			base.AwakeFromNib ();
 		
+			//this.WillClose += OnFormClosed;
+			this.Delegate = new TestDelegate();
+
 		}
 
 		partial void tb_ActConfig (Foundation.NSObject sender)
@@ -38,7 +63,6 @@ namespace MacRAR
 		partial void tb_ActSair (Foundation.NSObject sender)
 		{
 			PerformClose (this);
-
 		}
 
 	}
