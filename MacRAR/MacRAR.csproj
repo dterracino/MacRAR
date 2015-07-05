@@ -78,6 +78,7 @@
     <Compile Include="ConfigWindowController.cs" />
     <Compile Include="clsIOPrefs.cs" />
     <Compile Include="clsOpenRAR.cs" />
+    <Compile Include="clsViewArquivos.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="MainWindow.xib" />

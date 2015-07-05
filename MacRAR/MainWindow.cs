@@ -11,15 +11,16 @@ namespace MacRAR
 		public override bool WindowShouldClose (NSObject sender)
 		{
 
-			var alert = new NSAlert () {
+			NSAlert alert = new NSAlert () {
 				AlertStyle = NSAlertStyle.Warning,
 				InformativeText = "Deseja realmente encerrar o MacRAR ?",
-				MessageText = "Encerrar MacRAR",
+				MessageText = "Encerrar MacRAR", 
 			};
 			alert.AddButton ("Não");
 			alert.AddButton ("Sim");
-			var result = alert.RunModal ();
+			nint result = alert.RunModal ();
 			if (result == 1001) {
+				NSApplication.SharedApplication.Terminate (this);
 				return true;
 			} else {
 				return false;
@@ -63,6 +64,7 @@ namespace MacRAR
 		partial void tb_ActSair (Foundation.NSObject sender)
 		{
 			PerformClose (this);
+
 		}
 
 	}
