@@ -56,6 +56,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
+    <Folder Include="ViewArquivos\" />
+    <Folder Include="ConfigWindow\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainWindow.cs" />
@@ -71,19 +73,21 @@
     <Compile Include="AppDelegate.designer.cs">
       <DependentUpon>AppDelegate.cs</DependentUpon>
     </Compile>
-    <Compile Include="ConfigWindow.cs" />
-    <Compile Include="ConfigWindow.designer.cs">
-      <DependentUpon>ConfigWindow.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ConfigWindowController.cs" />
     <Compile Include="clsIOPrefs.cs" />
     <Compile Include="clsOpenRAR.cs" />
-    <Compile Include="clsViewArquivos.cs" />
+    <Compile Include="ViewArquivos\clsViewArquivos.cs" />
+    <Compile Include="ViewArquivos\ViewArquivosDataSource.cs" />
+    <Compile Include="ViewArquivos\ViewArquivosDelegate.cs" />
+    <Compile Include="ConfigWindow\ConfigWindow.cs" />
+    <Compile Include="ConfigWindow\ConfigWindow.designer.cs">
+      <DependentUpon>ConfigWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ConfigWindow\ConfigWindowController.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="MainWindow.xib" />
     <InterfaceDefinition Include="MainMenu.xib" />
-    <InterfaceDefinition Include="ConfigWindow.xib" />
+    <InterfaceDefinition Include="ConfigWindow\ConfigWindow.xib" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />

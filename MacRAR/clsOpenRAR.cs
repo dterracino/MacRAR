@@ -9,7 +9,7 @@ namespace MacRAR
 	public class clsOpenRAR
 	{
 
-		public void OpenRAR(NSWindow window)
+		public void OpenRAR(NSWindow window, NSTableView TableView)
 		{
 			string[] filetypes = {"rar"};
 			clsIOPrefs ioPrefs = new clsIOPrefs ();
@@ -44,6 +44,41 @@ namespace MacRAR
 							txtRET = txtRET.Substring(pos);
 							pos = 0;
 						} while (true);
+						if (nomes.Count > 0) {
+							TableView.Enabled = true;
+							TableView.Hidden = false;
+							ViewArquivosDataSource datasource = new ViewArquivosDataSource ();
+							foreach (string nome in nomes) {
+								clsViewArquivos viewArquivos = new clsViewArquivos ();
+								string[] colunas = nome.Split ('\n');
+								string tipo = colunas [1].Substring (colunas [1].IndexOf (":") + 1).Trim();
+								viewArquivos.Nome = colunas [0].Substring (colunas [0].IndexOf (":") + 1).Trim();
+								viewArquivos.Tipo = colunas [1].Substring (colunas [1].IndexOf (":") + 1).Trim();
+								if (tipo == "File") {
+									viewArquivos.Tamanho = colunas [2].Substring (colunas [2].IndexOf (":") + 1).Trim();
+									viewArquivos.Compactado = colunas [3].Substring (colunas [3].IndexOf (":") + 1).Trim();
+									viewArquivos.Compressao = colunas [4].Substring (colunas [4].IndexOf (":") + 1).Trim();
+									viewArquivos.DataHora = colunas [5].Substring (colunas [5].IndexOf (":") + 1).Trim();
+									viewArquivos.Atributos = colunas [6].Substring (colunas [6].IndexOf (":") + 1).Trim();
+									viewArquivos.CRC32 = colunas [7].Substring (colunas [7].IndexOf (":") + 1).Trim();
+									viewArquivos.OS = colunas [8].Substring (colunas [8].IndexOf (":") + 1).Trim();
+									viewArquivos.Compressor = colunas [9].Substring (colunas [9].IndexOf (":") + 1).Trim();
+								} else {
+									viewArquivos.Tamanho = "";
+									viewArquivos.Compactado = "";
+									viewArquivos.Compressao = "";
+									viewArquivos.DataHora = colunas [2].Substring (colunas [2].IndexOf (":") + 1).Trim();
+									viewArquivos.Atributos = colunas [3].Substring (colunas [3].IndexOf (":") + 1).Trim();
+									viewArquivos.CRC32 = colunas [4].Substring (colunas [4].IndexOf (":") + 1).Trim();
+									viewArquivos.OS = colunas [5].Substring (colunas [5].IndexOf (":") + 1).Trim();
+									viewArquivos.Compressor = colunas [6].Substring (colunas [6].IndexOf (":") + 1).Trim();
+								}
+								datasource.ViewArquivos.Add (viewArquivos);
+								viewArquivos = null;
+							}
+							TableView.DataSource = datasource;
+							TableView.Delegate = new ViewArquivosDelegate (datasource);
+						}
 					} else {
 						NSAlert alert = new NSAlert () {
 							AlertStyle = NSAlertStyle.Warning,
@@ -52,13 +87,9 @@ namespace MacRAR
 						};
 						alert.BeginSheet (window);
 					}
-
-
 				}
-
 			}
 			ioPrefs = null;
 		}
 	}
 }
-

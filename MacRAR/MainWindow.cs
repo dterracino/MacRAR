@@ -18,6 +18,10 @@ namespace MacRAR
 			};
 			alert.AddButton ("Não");
 			alert.AddButton ("Sim");
+
+
+
+
 			nint result = alert.RunModal ();
 			if (result == 1001) {
 				NSApplication.SharedApplication.Terminate (this);
@@ -43,7 +47,6 @@ namespace MacRAR
 		{
 			base.AwakeFromNib ();
 		
-			//this.WillClose += OnFormClosed;
 			this.Delegate = new TestDelegate();
 
 		}
@@ -57,7 +60,7 @@ namespace MacRAR
 		partial void tb_actAbrir (Foundation.NSObject sender)
 		{
 			clsOpenRAR oRAR = new clsOpenRAR ();
-			oRAR.OpenRAR (this);
+			oRAR.OpenRAR (this, this.tbv_Arquivos );
 			oRAR = null;
 		}
 
