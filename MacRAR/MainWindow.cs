@@ -44,7 +44,10 @@ namespace MacRAR
 			base.AwakeFromNib ();
 		
 			this.Delegate = new TestDelegate();
-
+			this.tb_outAdicionar.Enabled = false;
+			this.tb_outAtualizar.Enabled = false;
+			this.tb_outExtrair.Enabled = false;
+			this.tb_outRemover.Enabled = false;
 		}
 
 		partial void tb_ActConfig (Foundation.NSObject sender)

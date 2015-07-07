@@ -96,7 +96,11 @@
   <ItemGroup>
     <BundleResource Include="Resources\icon.icns" />
     <BundleResource Include="Resources\gears.png" />
+    <BundleResource Include="Resources\AddFolder.png" />
+    <BundleResource Include="Resources\CheckFolder.png" />
+    <BundleResource Include="Resources\ExtractFolder.png" />
     <BundleResource Include="Resources\OpenFolder.png" />
-    <BundleResource Include="Resources\exit.png" />
+    <BundleResource Include="Resources\RemoveFolder.png" />
+    <BundleResource Include="Resources\Exit.png" />
   </ItemGroup>
 </Project>

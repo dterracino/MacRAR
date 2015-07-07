@@ -47,6 +47,13 @@ namespace MacRAR
 						if (nomes.Count > 0) {
 							TableView.Enabled = true;
 							TableView.Hidden = false;
+
+							window.tb_outAdicionar.Enabled = false;
+							window.tb_outAtualizar.Enabled = false;
+							window.tb_outExtrair.Enabled = false;
+							window.tb_outRemover.Enabled = false;
+
+
 							chk_All.Enabled = true;
 							ViewArquivosDataSource datasource = new ViewArquivosDataSource ();
 							foreach (string nome in nomes) {

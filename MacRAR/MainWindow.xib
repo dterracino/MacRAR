@@ -60,6 +60,26 @@
 					<int key="NSToolbarDisplayMode">1</int>
 					<int key="NSToolbarSizeMode">1</int>
 					<dictionary class="NSMutableDictionary" key="NSToolbarIBIdentifiedItems">
+						<object class="NSToolbarItem" key="00150D34-25DE-4B21-ABA6-1BF3FA01890C" id="766550650">
+							<string key="NSToolbarItemIdentifier">00150D34-25DE-4B21-ABA6-1BF3FA01890C</string>
+							<string key="NSToolbarItemLabel">Atualizar Arquivo</string>
+							<string key="NSToolbarItemPaletteLabel">Atualizar Arquivo</string>
+							<string key="NSToolbarItemToolTip"/>
+							<nil key="NSToolbarItemView"/>
+							<object class="NSCustomResource" key="NSToolbarItemImage">
+								<string key="NSClassName">NSImage</string>
+								<string key="NSResourceName">CheckFolder</string>
+							</object>
+							<nil key="NSToolbarItemTarget"/>
+							<nil key="NSToolbarItemAction"/>
+							<string key="NSToolbarItemMinSize">{0, 0}</string>
+							<string key="NSToolbarItemMaxSize">{0, 0}</string>
+							<bool key="NSToolbarItemEnabled">YES</bool>
+							<bool key="NSToolbarItemAutovalidates">YES</bool>
+							<int key="NSToolbarItemTag">-1</int>
+							<bool key="NSToolbarIsUserRemovable">YES</bool>
+							<int key="NSToolbarItemVisibilityPriority">0</int>
+						</object>
 						<object class="NSToolbarItem" key="08041B5D-DCD8-4622-ACB0-8AECAC96BB99" id="351410650">
 							<string key="NSToolbarItemIdentifier">08041B5D-DCD8-4622-ACB0-8AECAC96BB99</string>
 							<string key="NSToolbarItemLabel">Configurações</string>
@@ -69,6 +89,46 @@
 							<object class="NSCustomResource" key="NSToolbarItemImage">
 								<string key="NSClassName">NSImage</string>
 								<string key="NSResourceName">gears</string>
+							</object>
+							<nil key="NSToolbarItemTarget"/>
+							<nil key="NSToolbarItemAction"/>
+							<string key="NSToolbarItemMinSize">{0, 0}</string>
+							<string key="NSToolbarItemMaxSize">{0, 0}</string>
+							<bool key="NSToolbarItemEnabled">YES</bool>
+							<bool key="NSToolbarItemAutovalidates">YES</bool>
+							<int key="NSToolbarItemTag">-1</int>
+							<bool key="NSToolbarIsUserRemovable">YES</bool>
+							<int key="NSToolbarItemVisibilityPriority">0</int>
+						</object>
+						<object class="NSToolbarItem" key="08213703-BC9A-43C2-A03B-1EF672E5E308" id="111862897">
+							<string key="NSToolbarItemIdentifier">08213703-BC9A-43C2-A03B-1EF672E5E308</string>
+							<string key="NSToolbarItemLabel">Adicionar Arquivos</string>
+							<string key="NSToolbarItemPaletteLabel">Adicionar Arquivos</string>
+							<string key="NSToolbarItemToolTip"/>
+							<nil key="NSToolbarItemView"/>
+							<object class="NSCustomResource" key="NSToolbarItemImage">
+								<string key="NSClassName">NSImage</string>
+								<string key="NSResourceName">AddFolder</string>
+							</object>
+							<nil key="NSToolbarItemTarget"/>
+							<nil key="NSToolbarItemAction"/>
+							<string key="NSToolbarItemMinSize">{0, 0}</string>
+							<string key="NSToolbarItemMaxSize">{0, 0}</string>
+							<bool key="NSToolbarItemEnabled">YES</bool>
+							<bool key="NSToolbarItemAutovalidates">YES</bool>
+							<int key="NSToolbarItemTag">-1</int>
+							<bool key="NSToolbarIsUserRemovable">YES</bool>
+							<int key="NSToolbarItemVisibilityPriority">0</int>
+						</object>
+						<object class="NSToolbarItem" key="21DA71CC-AC0E-4AAF-8AAF-B13073BB1390" id="96432417">
+							<string key="NSToolbarItemIdentifier">21DA71CC-AC0E-4AAF-8AAF-B13073BB1390</string>
+							<string key="NSToolbarItemLabel">Remover Arquivos</string>
+							<string key="NSToolbarItemPaletteLabel">Remover Arquivos</string>
+							<string key="NSToolbarItemToolTip"/>
+							<nil key="NSToolbarItemView"/>
+							<object class="NSCustomResource" key="NSToolbarItemImage">
+								<string key="NSClassName">NSImage</string>
+								<string key="NSResourceName">RemoveFolder</string>
 							</object>
 							<nil key="NSToolbarItemTarget"/>
 							<nil key="NSToolbarItemAction"/>
@@ -108,7 +168,27 @@
 							<nil key="NSToolbarItemView"/>
 							<object class="NSCustomResource" key="NSToolbarItemImage">
 								<string key="NSClassName">NSImage</string>
-								<string key="NSResourceName">exit</string>
+								<string key="NSResourceName">Exit</string>
+							</object>
+							<nil key="NSToolbarItemTarget"/>
+							<nil key="NSToolbarItemAction"/>
+							<string key="NSToolbarItemMinSize">{0, 0}</string>
+							<string key="NSToolbarItemMaxSize">{0, 0}</string>
+							<bool key="NSToolbarItemEnabled">YES</bool>
+							<bool key="NSToolbarItemAutovalidates">YES</bool>
+							<int key="NSToolbarItemTag">-1</int>
+							<bool key="NSToolbarIsUserRemovable">YES</bool>
+							<int key="NSToolbarItemVisibilityPriority">0</int>
+						</object>
+						<object class="NSToolbarItem" key="FCC56C66-C3CB-40CB-81F0-C47DF80D5E6D" id="313146240">
+							<string key="NSToolbarItemIdentifier">FCC56C66-C3CB-40CB-81F0-C47DF80D5E6D</string>
+							<string key="NSToolbarItemLabel">Extrair Arquivos</string>
+							<string key="NSToolbarItemPaletteLabel">Extrair Arquivos</string>
+							<string key="NSToolbarItemToolTip"/>
+							<nil key="NSToolbarItemView"/>
+							<object class="NSCustomResource" key="NSToolbarItemImage">
+								<string key="NSClassName">NSImage</string>
+								<string key="NSResourceName">ExtractFolder</string>
 							</object>
 							<nil key="NSToolbarItemTarget"/>
 							<nil key="NSToolbarItemAction"/>
@@ -181,17 +261,28 @@
 							</object>
 						</object>
 					</dictionary>
-					<array key="NSToolbarIBAllowedItems">
+					<array class="NSMutableArray" key="NSToolbarIBAllowedItems">
 						<reference ref="431574318"/>
 						<reference ref="351410650"/>
 						<reference ref="795667077"/>
 						<reference ref="758738499"/>
 						<reference ref="511668668"/>
+						<reference ref="313146240"/>
+						<reference ref="96432417"/>
+						<reference ref="766550650"/>
+						<reference ref="111862897"/>
 					</array>
 					<array key="NSToolbarIBDefaultItems">
 						<reference ref="351410650"/>
 						<reference ref="431574318"/>
 						<reference ref="795667077"/>
+						<reference ref="431574318"/>
+						<reference ref="111862897"/>
+						<reference ref="96432417"/>
+						<reference ref="313146240"/>
+						<reference ref="431574318"/>
+						<reference ref="766550650"/>
+						<reference ref="431574318"/>
 						<reference ref="511668668"/>
 						<reference ref="758738499"/>
 					</array>
@@ -545,7 +636,7 @@
 													<reference key="NSNextKeyView" ref="662116704"/>
 												</object>
 											</array>
-											<string key="NSFrameSize">{1450, 342}</string>
+											<string key="NSFrameSize">{1450, 327}</string>
 											<reference key="NSSuperview" ref="1050885560"/>
 											<reference key="NSWindow"/>
 											<reference key="NSNextKeyView" ref="540030988"/>
@@ -562,10 +653,13 @@
 												<string key="NSReuseIdentifierKey">_NS:15</string>
 												<reference key="NSTableView" ref="785414978"/>
 											</object>
-											<object class="_NSCornerView" key="NSCornerView">
-												<nil key="NSNextResponder"/>
+											<object class="_NSCornerView" key="NSCornerView" id="155523954">
+												<reference key="NSNextResponder" ref="95053011"/>
 												<int key="NSvFlags">-2147483392</int>
 												<string key="NSFrameSize">{15, 20}</string>
+												<reference key="NSSuperview" ref="95053011"/>
+												<reference key="NSWindow"/>
+												<reference key="NSNextKeyView" ref="978476623"/>
 												<string key="NSReuseIdentifierKey">_NS:19</string>
 											</object>
 											<array class="NSMutableArray" key="NSTableColumns">
@@ -927,7 +1021,7 @@
 											<int key="NSTableViewGroupRowStyle">1</int>
 										</object>
 									</array>
-									<string key="NSFrame">{{1, 17}, {751, 342}}</string>
+									<string key="NSFrame">{{1, 17}, {751, 327}}</string>
 									<reference key="NSSuperview" ref="95053011"/>
 									<reference key="NSWindow"/>
 									<reference key="NSNextKeyView" ref="785414978"/>
@@ -969,7 +1063,7 @@
 								<object class="NSScroller" id="545146831">
 									<reference key="NSNextResponder" ref="95053011"/>
 									<int key="NSvFlags">256</int>
-									<string key="NSFrame">{{1, 343}, {751, 16}}</string>
+									<string key="NSFrame">{{1, 344}, {751, 15}}</string>
 									<reference key="NSSuperview" ref="95053011"/>
 									<reference key="NSWindow"/>
 									<reference key="NSNextKeyView" ref="284098961"/>
@@ -983,17 +1077,19 @@
 									<string key="NSAction">_doScroller:</string>
 									<double key="NSPercent">0.51793103448275857</double>
 								</object>
+								<reference ref="155523954"/>
 							</array>
 							<string key="NSFrame">{{-1, 28}, {753, 360}}</string>
 							<reference key="NSSuperview" ref="312036702"/>
 							<reference key="NSWindow"/>
-							<reference key="NSNextKeyView" ref="978476623"/>
+							<reference key="NSNextKeyView" ref="155523954"/>
 							<string key="NSReuseIdentifierKey">_NS:9</string>
 							<int key="NSsFlags">133810</int>
 							<reference key="NSVScroller" ref="631609313"/>
 							<reference key="NSHScroller" ref="545146831"/>
 							<reference key="NSContentView" ref="1050885560"/>
 							<reference key="NSHeaderClipView" ref="978476623"/>
+							<reference key="NSCornerView" ref="155523954"/>
 							<bytes key="NSScrollAmts">QSAAAEEgAABBmAAAQZgAAA</bytes>
 							<double key="NSMinMagnification">0.25</double>
 							<double key="NSMaxMagnification">4</double>
@@ -1184,6 +1280,78 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
+						<string key="label">tb_ActExtrair</string>
+						<reference key="source" ref="748157544"/>
+						<reference key="destination" ref="313146240"/>
+					</object>
+					<int key="connectionID">190</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">tb_ActExtrair:</string>
+						<reference key="source" ref="748157544"/>
+						<reference key="destination" ref="313146240"/>
+					</object>
+					<int key="connectionID">191</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">tb_actRemover:</string>
+						<reference key="source" ref="748157544"/>
+						<reference key="destination" ref="96432417"/>
+					</object>
+					<int key="connectionID">192</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">tb_actAtualizar:</string>
+						<reference key="source" ref="748157544"/>
+						<reference key="destination" ref="766550650"/>
+					</object>
+					<int key="connectionID">193</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">tb_outExtrair</string>
+						<reference key="source" ref="748157544"/>
+						<reference key="destination" ref="313146240"/>
+					</object>
+					<int key="connectionID">194</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">tb_outRemover</string>
+						<reference key="source" ref="748157544"/>
+						<reference key="destination" ref="96432417"/>
+					</object>
+					<int key="connectionID">195</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">tb_outAtualizar</string>
+						<reference key="source" ref="748157544"/>
+						<reference key="destination" ref="766550650"/>
+					</object>
+					<int key="connectionID">196</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">tb_outAdicionar</string>
+						<reference key="source" ref="748157544"/>
+						<reference key="destination" ref="111862897"/>
+					</object>
+					<int key="connectionID">198</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">tb_ActAdicionar:</string>
+						<reference key="source" ref="748157544"/>
+						<reference key="destination" ref="111862897"/>
+					</object>
+					<int key="connectionID">199</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
 						<string key="label">textField</string>
 						<reference key="source" ref="540030988"/>
 						<reference key="destination" ref="420733309"/>
@@ -1316,6 +1484,10 @@
 							<reference ref="795667077"/>
 							<reference ref="758738499"/>
 							<reference ref="511668668"/>
+							<reference ref="313146240"/>
+							<reference ref="96432417"/>
+							<reference ref="766550650"/>
+							<reference ref="111862897"/>
 						</array>
 						<reference key="parent" ref="748157544"/>
 					</object>
@@ -1750,6 +1922,26 @@
 						<reference key="object" ref="645088374"/>
 						<reference key="parent" ref="284098961"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">187</int>
+						<reference key="object" ref="313146240"/>
+						<reference key="parent" ref="6565771"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">188</int>
+						<reference key="object" ref="96432417"/>
+						<reference key="parent" ref="6565771"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">189</int>
+						<reference key="object" ref="766550650"/>
+						<reference key="parent" ref="6565771"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">197</int>
+						<reference key="object" ref="111862897"/>
+						<reference key="parent" ref="6565771"/>
+					</object>
 				</array>
 			</object>
 			<dictionary class="NSMutableDictionary" key="flattenedProperties">
@@ -1855,6 +2047,10 @@
 				<string key="162.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="175.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="176.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="187.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="188.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="189.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="197.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<boolean value="YES" key="2.IBNSWindowAutoPositionCentersHorizontal"/>
 				<boolean value="YES" key="2.IBNSWindowAutoPositionCentersVertical"/>
 				<string key="2.IBPersistedLastKnownCanvasPosition">{491.5, 298.5}</string>
@@ -1875,7 +2071,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">186</int>
+			<int key="maxID">199</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -1884,17 +2080,29 @@
 					<string key="superclassName">NSWindow</string>
 					<dictionary class="NSMutableDictionary" key="actions">
 						<string key="chk_actSelAll:">id</string>
+						<string key="tb_ActAdicionar:">id</string>
 						<string key="tb_ActConfig:">id</string>
+						<string key="tb_ActExtrair:">id</string>
 						<string key="tb_ActSair:">id</string>
 						<string key="tb_actAbrir:">id</string>
+						<string key="tb_actAtualizar:">id</string>
+						<string key="tb_actRemover:">id</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="actionInfosByName">
 						<object class="IBActionInfo" key="chk_actSelAll:">
 							<string key="name">chk_actSelAll:</string>
 							<string key="candidateClassName">id</string>
 						</object>
+						<object class="IBActionInfo" key="tb_ActAdicionar:">
+							<string key="name">tb_ActAdicionar:</string>
+							<string key="candidateClassName">id</string>
+						</object>
 						<object class="IBActionInfo" key="tb_ActConfig:">
 							<string key="name">tb_ActConfig:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="tb_ActExtrair:">
+							<string key="name">tb_ActExtrair:</string>
 							<string key="candidateClassName">id</string>
 						</object>
 						<object class="IBActionInfo" key="tb_ActSair:">
@@ -1905,9 +2113,21 @@
 							<string key="name">tb_actAbrir:</string>
 							<string key="candidateClassName">id</string>
 						</object>
+						<object class="IBActionInfo" key="tb_actAtualizar:">
+							<string key="name">tb_actAtualizar:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="tb_actRemover:">
+							<string key="name">tb_actRemover:</string>
+							<string key="candidateClassName">id</string>
+						</object>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="chk_outSelAll">NSButton</string>
+						<string key="tb_outAdicionar">NSToolbarItem</string>
+						<string key="tb_outAtualizar">NSToolbarItem</string>
+						<string key="tb_outExtrair">NSToolbarItem</string>
+						<string key="tb_outRemover">NSToolbarItem</string>
 						<string key="tbv_Arquivos">NSTableView</string>
 						<string key="tbv_ColumnAtributos">NSTableColumn</string>
 						<string key="tbv_ColumnCRC32">NSTableColumn</string>
@@ -1924,6 +2144,22 @@
 						<object class="IBToOneOutletInfo" key="chk_outSelAll">
 							<string key="name">chk_outSelAll</string>
 							<string key="candidateClassName">NSButton</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="tb_outAdicionar">
+							<string key="name">tb_outAdicionar</string>
+							<string key="candidateClassName">NSToolbarItem</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="tb_outAtualizar">
+							<string key="name">tb_outAtualizar</string>
+							<string key="candidateClassName">NSToolbarItem</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="tb_outExtrair">
+							<string key="name">tb_outExtrair</string>
+							<string key="candidateClassName">NSToolbarItem</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="tb_outRemover">
+							<string key="name">tb_outRemover</string>
+							<string key="candidateClassName">NSToolbarItem</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="tbv_Arquivos">
 							<string key="name">tbv_Arquivos</string>
@@ -1979,17 +2215,29 @@
 					<string key="className">MainWindow</string>
 					<dictionary class="NSMutableDictionary" key="actions">
 						<string key="chk_actSelAll:">id</string>
+						<string key="tb_ActAdicionar:">id</string>
 						<string key="tb_ActConfig:">id</string>
+						<string key="tb_ActExtrair:">id</string>
 						<string key="tb_ActSair:">id</string>
 						<string key="tb_actAbrir:">id</string>
+						<string key="tb_actAtualizar:">id</string>
+						<string key="tb_actRemover:">id</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="actionInfosByName">
 						<object class="IBActionInfo" key="chk_actSelAll:">
 							<string key="name">chk_actSelAll:</string>
 							<string key="candidateClassName">id</string>
 						</object>
+						<object class="IBActionInfo" key="tb_ActAdicionar:">
+							<string key="name">tb_ActAdicionar:</string>
+							<string key="candidateClassName">id</string>
+						</object>
 						<object class="IBActionInfo" key="tb_ActConfig:">
 							<string key="name">tb_ActConfig:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="tb_ActExtrair:">
+							<string key="name">tb_ActExtrair:</string>
 							<string key="candidateClassName">id</string>
 						</object>
 						<object class="IBActionInfo" key="tb_ActSair:">
@@ -1998,6 +2246,14 @@
 						</object>
 						<object class="IBActionInfo" key="tb_actAbrir:">
 							<string key="name">tb_actAbrir:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="tb_actAtualizar:">
+							<string key="name">tb_actAtualizar:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="tb_actRemover:">
+							<string key="name">tb_actRemover:</string>
 							<string key="candidateClassName">id</string>
 						</object>
 					</dictionary>
@@ -2036,11 +2292,15 @@
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 		<dictionary class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
+			<string key="AddFolder">{32, 32}</string>
+			<string key="CheckFolder">{32, 32}</string>
+			<string key="Exit">{32, 32}</string>
+			<string key="ExtractFolder">{32, 32}</string>
 			<string key="NSMenuCheckmark">{12, 12}</string>
 			<string key="NSMenuMixedState">{10, 2}</string>
 			<string key="NSSwitch">{15, 15}</string>
-			<string key="OpenFolder">{64, 64}</string>
-			<string key="exit">{64, 64}</string>
+			<string key="OpenFolder">{32, 32}</string>
+			<string key="RemoveFolder">{32, 32}</string>
 			<string key="gears">{64, 64}</string>
 		</dictionary>
 	</data>
