@@ -77,6 +77,11 @@ namespace MacRAR
 			return view;
 		}
 
+		public override bool ShouldSelectRow (NSTableView tableView, nint row)
+		{
+			return true;
+		}
+
 	}
 }
 
