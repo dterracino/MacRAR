@@ -30,6 +30,45 @@ namespace MacRAR
 
 	public partial class MainWindow : NSWindow
 	{
+
+		public bool tb_outAdicionarActive {
+			get {
+				return this.tb_outAdicionar.Active;
+			}
+			set {
+				this.tb_outAdicionar.Active = value;
+			}
+		}
+
+		public bool tb_outAtualizarActive {
+			get {
+				return this.tb_outAtualizar.Active;
+			}
+			set {
+				this.tb_outAtualizar.Active = value;
+			}
+		}
+
+		public bool tb_outExtrairActive {
+			get {
+				return this.tb_outExtrair.Active;
+			}
+			set {
+				this.tb_outExtrair.Active = value;
+			}
+		}
+
+		public bool tb_outRemoverActive {
+			get {
+				return this.tb_outRemover.Active;
+			}
+			set {
+				this.tb_outRemover.Active = value;
+			}
+		}
+
+		public string rarFile = string.Empty;
+
 		public MainWindow (IntPtr handle) : base (handle)
 		{
 		}
@@ -44,10 +83,12 @@ namespace MacRAR
 			base.AwakeFromNib ();
 		
 			this.Delegate = new TestDelegate();
-			this.tb_outAdicionar.Enabled = false;
-			this.tb_outAtualizar.Enabled = false;
-			this.tb_outExtrair.Enabled = false;
-			this.tb_outRemover.Enabled = false;
+
+			this.tb_outAdicionarActive = false;
+			this.tb_outAtualizarActive = false;
+			this.tb_outExtrairActive = false;
+			this.tb_outRemoverActive = false;
+
 		}
 
 		partial void tb_ActConfig (Foundation.NSObject sender)
@@ -59,7 +100,7 @@ namespace MacRAR
 		partial void tb_actAbrir (Foundation.NSObject sender)
 		{
 			clsOpenRAR oRAR = new clsOpenRAR ();
-			oRAR.OpenRAR (this, this.tbv_Arquivos, this.chk_outSelAll  );
+			rarFile = oRAR.OpenRAR (this, this.tbv_Arquivos, this.chk_outSelAll  );
 			oRAR = null;
 		}
 
@@ -79,5 +120,24 @@ namespace MacRAR
 			}
 		}
 
+		partial void tb_ActAdicionar (NSObject sender)
+		{
+			
+		}
+
+		partial void tb_ActExtrair (NSObject sender)
+		{
+
+		}
+
+		partial void tb_actAtualizar (NSObject sender)
+		{
+	
+		}
+
+		partial void tb_actRemover (NSObject sender)
+		{
+			
+		}
 	}
 }

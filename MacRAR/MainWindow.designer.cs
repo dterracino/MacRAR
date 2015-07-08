@@ -16,16 +16,16 @@ namespace MacRAR
 		AppKit.NSButton chk_outSelAll { get; set; }
 
 		[Outlet]
-		AppKit.NSToolbarItem tb_outAdicionar { get; set; }
+		MacRAR.ActivatableItem tb_outAdicionar { get; set; }
 
 		[Outlet]
-		AppKit.NSToolbarItem tb_outAtualizar { get; set; }
+		MacRAR.ActivatableItem tb_outAtualizar { get; set; }
 
 		[Outlet]
-		AppKit.NSToolbarItem tb_outExtrair { get; set; }
+		MacRAR.ActivatableItem tb_outExtrair { get; set; }
 
 		[Outlet]
-		AppKit.NSToolbarItem tb_outRemover { get; set; }
+		MacRAR.ActivatableItem tb_outRemover { get; set; }
 
 		[Outlet]
 		AppKit.NSTableView tbv_Arquivos { get; set; }
@@ -91,6 +91,26 @@ namespace MacRAR
 				chk_outSelAll = null;
 			}
 
+			if (tb_outAdicionar != null) {
+				tb_outAdicionar.Dispose ();
+				tb_outAdicionar = null;
+			}
+
+			if (tb_outExtrair != null) {
+				tb_outExtrair.Dispose ();
+				tb_outExtrair = null;
+			}
+
+			if (tb_outRemover != null) {
+				tb_outRemover.Dispose ();
+				tb_outRemover = null;
+			}
+
+			if (tb_outAtualizar != null) {
+				tb_outAtualizar.Dispose ();
+				tb_outAtualizar = null;
+			}
+
 			if (tbv_Arquivos != null) {
 				tbv_Arquivos.Dispose ();
 				tbv_Arquivos = null;
@@ -144,26 +164,6 @@ namespace MacRAR
 			if (tbv_ColumnTipo != null) {
 				tbv_ColumnTipo.Dispose ();
 				tbv_ColumnTipo = null;
-			}
-
-			if (tb_outExtrair != null) {
-				tb_outExtrair.Dispose ();
-				tb_outExtrair = null;
-			}
-
-			if (tb_outRemover != null) {
-				tb_outRemover.Dispose ();
-				tb_outRemover = null;
-			}
-
-			if (tb_outAtualizar != null) {
-				tb_outAtualizar.Dispose ();
-				tb_outAtualizar = null;
-			}
-
-			if (tb_outAdicionar != null) {
-				tb_outAdicionar.Dispose ();
-				tb_outAdicionar = null;
 			}
 		}
 	}

@@ -83,6 +83,7 @@
       <DependentUpon>ConfigWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="ConfigWindow\ConfigWindowController.cs" />
+    <Compile Include="ActivatableItem.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="MainWindow.xib" />

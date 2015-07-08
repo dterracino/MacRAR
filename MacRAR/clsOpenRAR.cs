@@ -9,7 +9,7 @@ namespace MacRAR
 	public class clsOpenRAR
 	{
 
-		public void OpenRAR(NSWindow window, NSTableView TableView, NSButton chk_All)
+		public string OpenRAR(MainWindow  window, NSTableView TableView, NSButton chk_All)
 		{
 			string[] filetypes = {"rar"};
 			clsIOPrefs ioPrefs = new clsIOPrefs ();
@@ -48,11 +48,10 @@ namespace MacRAR
 							TableView.Enabled = true;
 							TableView.Hidden = false;
 
-							window.tb_outAdicionar.Enabled = false;
-							window.tb_outAtualizar.Enabled = false;
-							window.tb_outExtrair.Enabled = false;
-							window.tb_outRemover.Enabled = false;
-
+							window.tb_outAdicionarActive = true;
+							window.tb_outAtualizarActive = true;
+							window.tb_outExtrairActive = true;
+							window.tb_outRemoverActive = true;
 
 							chk_All.Enabled = true;
 							ViewArquivosDataSource datasource = new ViewArquivosDataSource ();
@@ -101,6 +100,13 @@ namespace MacRAR
 				}
 			}
 			ioPrefs = null;
+			return path;
 		}
+
+		public void ExtractRAR()
+		{
+
+		}
+
 	}
 }
