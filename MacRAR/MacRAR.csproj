@@ -103,5 +103,9 @@
     <BundleResource Include="Resources\OpenFolder.png" />
     <BundleResource Include="Resources\RemoveFolder.png" />
     <BundleResource Include="Resources\Exit.png" />
+    <BundleResource Include="Resources\Added.ico" />
+    <BundleResource Include="Resources\Novo.ico" />
+    <BundleResource Include="Resources\Excluido.ico" />
+    <BundleResource Include="Resources\Compactado.ico" />
   </ItemGroup>
 </Project>

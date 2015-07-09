@@ -19,5 +19,6 @@ namespace MacRAR
 			mainWindowController.Window.MakeKeyAndOrderFront (this);
 		}
 	}
+
 }
 
