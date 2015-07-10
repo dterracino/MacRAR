@@ -2,6 +2,7 @@
 
 using Foundation;
 using AppKit;
+using System.Collections.Generic;
 
 namespace MacRAR
 {
@@ -137,9 +138,25 @@ namespace MacRAR
 
 		partial void tb_actRemover (NSObject sender)
 		{
-			
-		}
+			NSIndexSet nSelRows = this.tbv_Arquivos.SelectedRows ;
+			if(nSelRows.Count>0)
+			{
+				nuint[] nRows = nSelRows.ToArray ();
+				foreach(nint lRow in nRows)
+				{
 
+					NSTableCellView view = (NSTableCellView)tbv_Arquivos.GetView(0,lRow,false);
+
+					NSTableRowView tbv = tbv_Arquivos.GetRowView(lRow,false);
+
+					//tbv.BackgroundColor = NSColor.Red;
+					tbv.BackgroundColor = NSColor.Magenta ;
+
+					view.ImageView.Image = NSImage.ImageNamed ("Excluido.ico");
+					view.ImageView.Tag = 1;
+				}
+			}
+		}
 
 	}
 }
