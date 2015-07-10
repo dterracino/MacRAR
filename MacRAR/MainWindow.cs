@@ -144,16 +144,11 @@ namespace MacRAR
 				nuint[] nRows = nSelRows.ToArray ();
 				foreach(nint lRow in nRows)
 				{
-
 					NSTableCellView view = (NSTableCellView)tbv_Arquivos.GetView(0,lRow,false);
-
 					NSTableRowView tbv = tbv_Arquivos.GetRowView(lRow,false);
-
-					//tbv.BackgroundColor = NSColor.Red;
-					tbv.BackgroundColor = NSColor.Magenta ;
-
-					view.ImageView.Image = NSImage.ImageNamed ("Excluido.ico");
-					view.ImageView.Tag = 1;
+					clsViewArquivos clvarq = new clsViewArquivos();
+					clvarq.SetStateArquivo(tbv,view,1);
+					clvarq=null;
 				}
 			}
 		}

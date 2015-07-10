@@ -84,16 +84,14 @@ namespace MacRAR
 			// Tag view
 			view.TextField.Tag = row;
 
-			// Tags:
-			// 0 - Compactado
-			// 1 - Excluido
-			// 2 - Adicionado
 
 			// Setup view based on the column selected
 			switch (tableColumn.Title) {
 			case "Nome":
-				view.ImageView.Image = NSImage.ImageNamed ("Compactado.ico");
-				view.ImageView.Tag = 0;
+				clsViewArquivos cvarq = new clsViewArquivos ();
+				NSTableRowView tbv = tableView.GetRowView(row, false);
+				cvarq.SetStateArquivo (tbv, view, view.ImageView.Tag);
+				cvarq = null;
 				view.TextField.Alignment = NSTextAlignment.Left ;
 				view.TextField.StringValue = DataSource.ViewArquivos [(int)row].Nome;
 				break;
