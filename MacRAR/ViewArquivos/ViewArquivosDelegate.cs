@@ -10,7 +10,7 @@ namespace MacRAR
 	public class ViewArquivosDelegate : NSTableViewDelegate
 	{
 
-		private const string CellIdentifier = "Nome";
+//		private const string CellIdentifier = "Nome";
 		private ViewArquivosDataSource DataSource;
 
 		public ViewArquivosDelegate (ViewArquivosDataSource datasource)
@@ -77,6 +77,9 @@ namespace MacRAR
 					case "Compressor":
 						DataSource.ViewArquivos [(int)view.TextField.Tag].Compressor = view.TextField.StringValue;
 						break;
+					case "Tags":
+						DataSource.ViewArquivos [(int)view.TextField.Tag].Tags  = view.TextField.StringValue;
+						break;
 					}
 				};
 			}
@@ -84,13 +87,11 @@ namespace MacRAR
 			// Tag view
 			view.TextField.Tag = row;
 
-
 			// Setup view based on the column selected
 			switch (tableColumn.Title) {
 			case "Nome":
 				clsViewArquivos cvarq = new clsViewArquivos ();
-				NSTableRowView tbv = tableView.GetRowView(row, false);
-				cvarq.SetStateArquivo (tbv, view, view.ImageView.Tag);
+				cvarq.SetStateArquivo (tableView.GetRowView(row, false), view, view.ImageView.Tag);
 				cvarq = null;
 				view.TextField.Alignment = NSTextAlignment.Left ;
 				view.TextField.StringValue = DataSource.ViewArquivos [(int)row].Nome;
@@ -131,6 +132,10 @@ namespace MacRAR
 				view.TextField.Alignment = NSTextAlignment.Left;
 				view.TextField.StringValue = DataSource.ViewArquivos [(int)row].Compressor;
 				break;
+			case "Tags":
+				view.TextField.StringValue = "0";
+				//view.Hidden = true;
+				break;
 			}
 			return view;
 		}
@@ -139,7 +144,7 @@ namespace MacRAR
 		{
 			return true;
 		}
-
+			
 	}
 }
 

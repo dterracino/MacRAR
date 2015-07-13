@@ -107,5 +107,6 @@
     <BundleResource Include="Resources\Novo.ico" />
     <BundleResource Include="Resources\Excluido.ico" />
     <BundleResource Include="Resources\Compactado.ico" />
+    <BundleResource Include="Resources\Desfazer.png" />
   </ItemGroup>
 </Project>

@@ -9,7 +9,7 @@ namespace MacRAR
 	public class clsOpenRAR
 	{
 
-		public string OpenRAR(MainWindow  window, NSTableView TableView, NSButton chk_All)
+		public string OpenRAR(MainWindow  window, NSTableView TableView)
 		{
 			string[] filetypes = {"rar"};
 			clsIOPrefs ioPrefs = new clsIOPrefs ();
@@ -53,7 +53,6 @@ namespace MacRAR
 							window.tb_outExtrairActive = true;
 							window.tb_outRemoverActive = true;
 
-							chk_All.Enabled = true;
 							ViewArquivosDataSource datasource = new ViewArquivosDataSource ();
 							foreach (string nome in nomes) {
 								clsViewArquivos viewArquivos = new clsViewArquivos ();
@@ -80,16 +79,17 @@ namespace MacRAR
 									viewArquivos.OS = colunas [5].Substring (colunas [5].IndexOf (":") + 1).Trim();
 									viewArquivos.Compressor = colunas [6].Substring (colunas [6].IndexOf (":") + 1).Trim();
 								}
+								viewArquivos.Tags = "";
 								datasource.ViewArquivos.Add (viewArquivos);
 								viewArquivos = null;
 							}
 							TableView.DataSource = datasource;
 							TableView.Delegate = new ViewArquivosDelegate (datasource);
+
 						}
 					} else {
 						TableView.Enabled = false;
 						TableView.Hidden = true;
-						chk_All.Enabled = false;
 						NSAlert alert = new NSAlert () {
 							AlertStyle = NSAlertStyle.Warning,
 							InformativeText = "Não foi possível processar o arquivo:\r\n" + path,

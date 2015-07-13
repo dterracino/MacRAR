@@ -32,13 +32,14 @@ namespace MacRAR
 		public string CRC32 { get; set;} = "";
 		public string OS { get; set;} = "";
 		public string Compressor { get; set;} = "";
+		public string Tags { get; set; } = "";
 
 		public clsViewArquivos ()
 		{
 		}
 
 		public clsViewArquivos (string nome, string tipo, string tamanho, string compactado, string compressao, string datahora, 
-			string atributos, string crc32, string os, string compressor)
+			string atributos, string crc32, string os, string compressor,string tags)
 		{
 			this.Nome = nome;
 			this.Tipo = tipo;
@@ -50,16 +51,18 @@ namespace MacRAR
 			this.CRC32 = crc32;
 			this.OS = os;
 			this.Compressor = compressor;
+			this.Tags = tags;
 		}
-
+			
 		public void SetStateArquivo(NSTableRowView tbv,NSTableCellView view, nint state)
 		{
 
 			// Compactado = 0
 			// Excluido = 1
 			// Adicionado = 2
+			// Desfazer = 3
 
-			switch (view.ImageView.Tag) {
+			switch (state) {
 			case 0:
 				tbv.BackgroundColor = NSColor.White;
 				view.ImageView.Image = NSImage.ImageNamed ("Compactado.ico");
@@ -72,9 +75,21 @@ namespace MacRAR
 				tbv.BackgroundColor = NSColor.Green;
 				view.ImageView.Image = NSImage.ImageNamed ("Adicionado.ico");
 				break;
+			case 3:
+				NSTableCellView tagView = (NSTableCellView)tbv.ViewAtColumn (tbv.NumberOfColumns - 1);
+				string values = tagView.TextField.StringValue;
+
+
+				break;
+
 			}
-			view.ImageView.Tag = state;
 		}
+
+//		public void HideShowTags(NSTableView tbView, bool hidden)
+//		{
+//			NSTableColumn[] tbColumns = tbView.TableColumns ();
+//			tbColumns [tbView.ColumnCount - 1].Hidden = hidden;
+//		}
 
 	}
 

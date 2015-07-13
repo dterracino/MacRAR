@@ -101,7 +101,7 @@ namespace MacRAR
 		partial void tb_actAbrir (Foundation.NSObject sender)
 		{
 			clsOpenRAR oRAR = new clsOpenRAR ();
-			rarFile = oRAR.OpenRAR (this, this.tbv_Arquivos, this.chk_outSelAll  );
+			rarFile = oRAR.OpenRAR (this, this.tbv_Arquivos);
 			oRAR = null;
 		}
 
@@ -110,15 +110,9 @@ namespace MacRAR
 			PerformClose (this);
 		}
 
-		partial void chk_actSelAll (Foundation.NSObject sender)
+		partial void btn_SelTudo (Foundation.NSObject sender)
 		{
-			if(this.chk_outSelAll.State == NSCellStateValue.On)
-			{
-				this.tbv_Arquivos.SelectAll (this);
-			}
-			else{
-				this.tbv_Arquivos.DeselectAll(this);
-			}
+			this.tbv_Arquivos.SelectAll (this);
 		}
 
 		partial void tb_ActAdicionar (NSObject sender)
@@ -139,15 +133,13 @@ namespace MacRAR
 		partial void tb_actRemover (NSObject sender)
 		{
 			NSIndexSet nSelRows = this.tbv_Arquivos.SelectedRows ;
-			if(nSelRows.Count>0)
+			if(nSelRows.Count > 0)
 			{
 				nuint[] nRows = nSelRows.ToArray ();
 				foreach(nint lRow in nRows)
 				{
-					NSTableCellView view = (NSTableCellView)tbv_Arquivos.GetView(0,lRow,false);
-					NSTableRowView tbv = tbv_Arquivos.GetRowView(lRow,false);
 					clsViewArquivos clvarq = new clsViewArquivos();
-					clvarq.SetStateArquivo(tbv,view,1);
+					clvarq.SetStateArquivo(tbv_Arquivos.GetRowView(lRow,false),(NSTableCellView)tbv_Arquivos.GetView(0,lRow,false),1);
 					clvarq=null;
 				}
 			}

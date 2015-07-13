@@ -13,13 +13,13 @@ namespace MacRAR
 	partial class MainWindow
 	{
 		[Outlet]
-		AppKit.NSButton chk_outSelAll { get; set; }
-
-		[Outlet]
 		MacRAR.ActivatableItem tb_outAdicionar { get; set; }
 
 		[Outlet]
 		MacRAR.ActivatableItem tb_outAtualizar { get; set; }
+
+		[Outlet]
+		AppKit.NSToolbarItem tb_outDesfazer { get; set; }
 
 		[Outlet]
 		MacRAR.ActivatableItem tb_outExtrair { get; set; }
@@ -55,13 +55,16 @@ namespace MacRAR
 		AppKit.NSTableColumn tbv_ColumnOS { get; set; }
 
 		[Outlet]
+		AppKit.NSTableColumn tbv_ColumnTags { get; set; }
+
+		[Outlet]
 		AppKit.NSTableColumn tbv_ColumnTamanho { get; set; }
 
 		[Outlet]
 		AppKit.NSTableColumn tbv_ColumnTipo { get; set; }
 
-		[Action ("chk_actSelAll:")]
-		partial void chk_actSelAll (Foundation.NSObject sender);
+		[Action ("btn_SelTudo:")]
+		partial void btn_SelTudo (Foundation.NSObject sender);
 
 		[Action ("tb_actAbrir:")]
 		partial void tb_actAbrir (Foundation.NSObject sender);
@@ -75,6 +78,9 @@ namespace MacRAR
 		[Action ("tb_ActConfig:")]
 		partial void tb_ActConfig (Foundation.NSObject sender);
 
+		[Action ("tb_actDesfazer:")]
+		partial void tb_actDesfazer (Foundation.NSObject sender);
+
 		[Action ("tb_ActExtrair:")]
 		partial void tb_ActExtrair (Foundation.NSObject sender);
 
@@ -86,14 +92,19 @@ namespace MacRAR
 		
 		void ReleaseDesignerOutlets ()
 		{
-			if (chk_outSelAll != null) {
-				chk_outSelAll.Dispose ();
-				chk_outSelAll = null;
-			}
-
 			if (tb_outAdicionar != null) {
 				tb_outAdicionar.Dispose ();
 				tb_outAdicionar = null;
+			}
+
+			if (tb_outAtualizar != null) {
+				tb_outAtualizar.Dispose ();
+				tb_outAtualizar = null;
+			}
+
+			if (tb_outDesfazer != null) {
+				tb_outDesfazer.Dispose ();
+				tb_outDesfazer = null;
 			}
 
 			if (tb_outExtrair != null) {
@@ -104,11 +115,6 @@ namespace MacRAR
 			if (tb_outRemover != null) {
 				tb_outRemover.Dispose ();
 				tb_outRemover = null;
-			}
-
-			if (tb_outAtualizar != null) {
-				tb_outAtualizar.Dispose ();
-				tb_outAtualizar = null;
 			}
 
 			if (tbv_Arquivos != null) {
@@ -154,6 +160,11 @@ namespace MacRAR
 			if (tbv_ColumnOS != null) {
 				tbv_ColumnOS.Dispose ();
 				tbv_ColumnOS = null;
+			}
+
+			if (tbv_ColumnTags != null) {
+				tbv_ColumnTags.Dispose ();
+				tbv_ColumnTags = null;
 			}
 
 			if (tbv_ColumnTamanho != null) {
