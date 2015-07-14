@@ -62,6 +62,12 @@ namespace MacRAR
 			// Adicionado = 2
 			// Desfazer = 3
 
+			NSTableCellView tagView = (NSTableCellView)tbv.ViewAtColumn(tbv.NumberOfColumns - 1);
+
+			if (tagView != null) {
+				string values = tagView.TextField.StringValue;
+			}
+
 			switch (state) {
 			case 0:
 				tbv.BackgroundColor = NSColor.White;
@@ -76,13 +82,35 @@ namespace MacRAR
 				view.ImageView.Image = NSImage.ImageNamed ("Adicionado.ico");
 				break;
 			case 3:
-				NSTableCellView tagView = (NSTableCellView)tbv.ViewAtColumn (tbv.NumberOfColumns - 1);
-				string values = tagView.TextField.StringValue;
+
 
 
 				break;
 
 			}
+		}
+
+		public void SetTagsArquivo(NSTextField column,string value,bool soma = false)
+		{
+			if (soma) {
+				column.StringValue = column.StringValue + value;
+			} else {
+				column.StringValue = value;
+			}
+		}
+
+		public string GetTagsArquivo(NSTableView tbv,nint row)
+		{
+			NSTableCellView cell = (NSTableCellView)tbv.GetView(tbv.RowCount -1, row, false);
+			string tags = cell.TextField.StringValue;
+			string tag = string.Empty;
+			if (tags.IndexOf ("|") > 0) {
+				string[] aTags = tags.Split ('|');
+				tag = aTags [0];
+			} else {
+				tag = tags;
+			}
+			return tag;
 		}
 
 //		public void HideShowTags(NSTableView tbView, bool hidden)

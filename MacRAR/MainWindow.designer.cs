@@ -19,7 +19,7 @@ namespace MacRAR
 		MacRAR.ActivatableItem tb_outAtualizar { get; set; }
 
 		[Outlet]
-		AppKit.NSToolbarItem tb_outDesfazer { get; set; }
+		MacRAR.ActivatableItem tb_outDesfazer { get; set; }
 
 		[Outlet]
 		MacRAR.ActivatableItem tb_outExtrair { get; set; }

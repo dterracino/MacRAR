@@ -52,6 +52,7 @@ namespace MacRAR
 							window.tb_outAtualizarActive = true;
 							window.tb_outExtrairActive = true;
 							window.tb_outRemoverActive = true;
+							window.tb_outDesfazerActive = true;
 
 							ViewArquivosDataSource datasource = new ViewArquivosDataSource ();
 							foreach (string nome in nomes) {

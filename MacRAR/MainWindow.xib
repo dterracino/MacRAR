@@ -694,7 +694,7 @@
 											<string key="NSFrameSize">{1453, 342}</string>
 											<reference key="NSSuperview" ref="1050885560"/>
 											<reference key="NSWindow"/>
-											<reference key="NSNextKeyView" ref="540030988"/>
+											<reference key="NSNextKeyView" ref="978476623"/>
 											<string key="NSReuseIdentifierKey">_NS:13</string>
 											<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
 											<bool key="NSControlAllowsExpansionToolTips">YES</bool>
@@ -1161,7 +1161,7 @@
 							<string key="NSFrame">{{-1, 28}, {753, 360}}</string>
 							<reference key="NSSuperview" ref="312036702"/>
 							<reference key="NSWindow"/>
-							<reference key="NSNextKeyView" ref="978476623"/>
+							<reference key="NSNextKeyView" ref="1050885560"/>
 							<string key="NSReuseIdentifierKey">_NS:9</string>
 							<int key="NSsFlags">133810</int>
 							<reference key="NSVScroller" ref="631609313"/>
@@ -1321,7 +1321,6 @@
 							<string key="NSFrame">{{501, 5}, {87, 17}}</string>
 							<reference key="NSSuperview" ref="312036702"/>
 							<reference key="NSWindow"/>
-							<reference key="NSNextKeyView"/>
 							<string key="NSReuseIdentifierKey">_NS:526</string>
 							<string key="NSHuggingPriority">{251, 750}</string>
 							<bool key="NSEnabled">YES</bool>
@@ -1612,14 +1611,6 @@
 					<int key="connectionID">222</int>
 				</object>
 				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">tb_outDesfazer</string>
-						<reference key="source" ref="748157544"/>
-						<reference key="destination" ref="613309579"/>
-					</object>
-					<int key="connectionID">224</int>
-				</object>
-				<object class="IBConnectionRecord">
 					<object class="IBActionConnection" key="connection">
 						<string key="label">tb_actDesfazer:</string>
 						<reference key="source" ref="748157544"/>
@@ -1634,6 +1625,14 @@
 						<reference key="destination" ref="774131340"/>
 					</object>
 					<int key="connectionID">232</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">tb_outDesfazer</string>
+						<reference key="source" ref="748157544"/>
+						<reference key="destination" ref="613309579"/>
+					</object>
+					<int key="connectionID">233</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
@@ -2508,6 +2507,7 @@
 				<string key="219.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="220.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="221.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="223.CustomClassName">ActivatableItem</string>
 				<string key="223.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="226.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<boolean value="YES" key="226.isInViewBasedMode"/>
@@ -2533,7 +2533,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">232</int>
+			<int key="maxID">233</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -2600,7 +2600,7 @@
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="tb_outAdicionar">ActivatableItem</string>
 						<string key="tb_outAtualizar">ActivatableItem</string>
-						<string key="tb_outDesfazer">NSToolbarItem</string>
+						<string key="tb_outDesfazer">ActivatableItem</string>
 						<string key="tb_outExtrair">ActivatableItem</string>
 						<string key="tb_outRemover">ActivatableItem</string>
 						<string key="tbv_Arquivos">NSTableView</string>
@@ -2627,7 +2627,7 @@
 						</object>
 						<object class="IBToOneOutletInfo" key="tb_outDesfazer">
 							<string key="name">tb_outDesfazer</string>
-							<string key="candidateClassName">NSToolbarItem</string>
+							<string key="candidateClassName">ActivatableItem</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="tb_outExtrair">
 							<string key="name">tb_outExtrair</string>

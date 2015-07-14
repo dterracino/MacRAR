@@ -68,6 +68,15 @@ namespace MacRAR
 			}
 		}
 
+		public bool tb_outDesfazerActive {
+			get {
+				return this.tb_outDesfazer.Active;
+			}
+			set {
+				this.tb_outDesfazer.Active = value;
+			}
+		}
+
 		public string rarFile = string.Empty;
 
 		public MainWindow (IntPtr handle) : base (handle)
@@ -89,6 +98,7 @@ namespace MacRAR
 			this.tb_outAtualizarActive = false;
 			this.tb_outExtrairActive = false;
 			this.tb_outRemoverActive = false;
+			this.tb_outDesfazerActive = false;
 
 		}
 
@@ -130,6 +140,12 @@ namespace MacRAR
 	
 		}
 
+
+		partial void tb_actDesfazer (Foundation.NSObject sender)
+		{
+
+		}
+
 		partial void tb_actRemover (NSObject sender)
 		{
 			NSIndexSet nSelRows = this.tbv_Arquivos.SelectedRows ;
@@ -140,6 +156,8 @@ namespace MacRAR
 				{
 					clsViewArquivos clvarq = new clsViewArquivos();
 					clvarq.SetStateArquivo(tbv_Arquivos.GetRowView(lRow,false),(NSTableCellView)tbv_Arquivos.GetView(0,lRow,false),1);
+
+
 					clvarq=null;
 				}
 			}

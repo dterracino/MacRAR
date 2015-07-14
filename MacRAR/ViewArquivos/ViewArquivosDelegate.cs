@@ -20,12 +20,10 @@ namespace MacRAR
 
 		public override NSView GetViewForItem (NSTableView tableView, NSTableColumn tableColumn, nint row)
 		{
-
-			// This pattern allows you reuse existing views when they are no-longer in use.
-			// If the returned view is null, you instance up a new view
-			// If a non-null view is returned, you modify it enough to reflect the new data
+			bool flagNovo = false;
 			NSTableCellView view = (NSTableCellView)tableView.MakeView (tableColumn.Title, this);
 			if (view == null) {
+				flagNovo = true;
 				view = new NSTableCellView ();
 				if (tableColumn.Title == "Nome") {
 					view.ImageView = new NSImageView (new CGRect (0, 0, 17, 17));
@@ -86,12 +84,16 @@ namespace MacRAR
 
 			// Tag view
 			view.TextField.Tag = row;
-
+			clsViewArquivos cvarq = null;
 			// Setup view based on the column selected
 			switch (tableColumn.Title) {
 			case "Nome":
-				clsViewArquivos cvarq = new clsViewArquivos ();
-				cvarq.SetStateArquivo (tableView.GetRowView(row, false), view, view.ImageView.Tag);
+				cvarq = new clsViewArquivos ();
+				if (flagNovo) {
+					cvarq.SetStateArquivo (tableView.GetRowView (row, false), view, view.ImageView.Tag);
+				} else {
+
+				}
 				cvarq = null;
 				view.TextField.Alignment = NSTextAlignment.Left ;
 				view.TextField.StringValue = DataSource.ViewArquivos [(int)row].Nome;
@@ -133,8 +135,13 @@ namespace MacRAR
 				view.TextField.StringValue = DataSource.ViewArquivos [(int)row].Compressor;
 				break;
 			case "Tags":
-				view.TextField.StringValue = "0";
-				//view.Hidden = true;
+				cvarq = new clsViewArquivos ();
+				if (flagNovo) {
+					cvarq.SetTagsArquivo (view.TextField, "0");
+				} else {
+					cvarq.SetTagsArquivo (view.TextField, view.TextField.StringValue);
+				}
+				cvarq = null;
 				break;
 			}
 			return view;
