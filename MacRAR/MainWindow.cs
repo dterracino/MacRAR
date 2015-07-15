@@ -19,7 +19,8 @@ namespace MacRAR
 			};
 			alert.AddButton ("Não");
 			alert.AddButton ("Sim");
-			nint result = alert.RunModal ();
+			nint result = alert.RunSheetModal ((NSWindow)sender);
+			//nint result = alert.RunModal ();
 			if (result == 1001) {
 				NSApplication.SharedApplication.Terminate (this);
 				return true;
@@ -132,7 +133,9 @@ namespace MacRAR
 
 		partial void tb_ActExtrair (NSObject sender)
 		{
-
+			clsOpenRAR orar = new clsOpenRAR();
+			orar.ExtractRAR();
+			orar=null;
 		}
 
 		partial void tb_actAtualizar (NSObject sender)
@@ -143,23 +146,62 @@ namespace MacRAR
 
 		partial void tb_actDesfazer (Foundation.NSObject sender)
 		{
-
+			this.procBtn(2);
 		}
 
 		partial void tb_actRemover (NSObject sender)
 		{
+			this.procBtn(1);
+		}
+
+		private void procBtn(int state = 1)
+		{
 			NSIndexSet nSelRows = this.tbv_Arquivos.SelectedRows ;
-			if(nSelRows.Count > 0)
-			{
+			if (nSelRows.Count > 0) {
 				nuint[] nRows = nSelRows.ToArray ();
-				foreach(nint lRow in nRows)
-				{
-					clsViewArquivos clvarq = new clsViewArquivos();
-					clvarq.SetStateArquivo(tbv_Arquivos.GetRowView(lRow,false),(NSTableCellView)tbv_Arquivos.GetView(0,lRow,false),1);
+				if (nRows.Length > 0) {
+					ViewArquivosDataSource datasource = (ViewArquivosDataSource)this.tbv_Arquivos.DataSource;
+					clsViewArquivos cvarqs = new clsViewArquivos ();
+					string aState = string.Empty;
+					foreach (nint lRow in nRows) {
+						switch (state) {
+						case 1:
+						aState = "1";
+							break;
+						case 2:
+							aState = cvarqs.GetTagsArquivo (datasource, (int)lRow, 1);
+							break;
+						}
 
-
-					clvarq=null;
+						cvarqs.SetTagsArquivo (datasource, (int)lRow, aState);
+						//					clsViewArquivos clvarq = new clsViewArquivos();
+						//					clvarq.SetStateArquivo(tbv_Arquivos.GetRowView(lRow,false),(NSTableCellView)tbv_Arquivos.GetView(0,lRow,false),1);
+						//
+						//
+						//					clvarq=null;
+					}
+					cvarqs = null;
+					datasource = null;
+					this.tbv_Arquivos.ReloadData ();
 				}
+			} else {
+				string mText = string.Empty;
+
+				switch (state) {
+				case 1:
+					mText = "Excluir Arquivo(s)";
+					break;
+				case 2:
+					mText = "Desfazer Ação";
+					break;
+				}
+
+				NSAlert alert = new NSAlert () {
+					AlertStyle = NSAlertStyle.Warning,
+					InformativeText = "Selecione ao menos um arquivo !",
+					MessageText = mText , 
+				};
+				alert.RunSheetModal (this);
 			}
 		}
 

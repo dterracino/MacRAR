@@ -71,10 +71,3 @@ namespace MacRAR
 	}
 }
 
-//				dlg.BeginSheet (window, result => {
-//					if (result == 1) {
-//						if (dlg.Url != null) {
-//							path = dlg.Url.Path;
-//						}   
-//					}
-//				});

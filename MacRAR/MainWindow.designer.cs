@@ -55,9 +55,6 @@ namespace MacRAR
 		AppKit.NSTableColumn tbv_ColumnOS { get; set; }
 
 		[Outlet]
-		AppKit.NSTableColumn tbv_ColumnTags { get; set; }
-
-		[Outlet]
 		AppKit.NSTableColumn tbv_ColumnTamanho { get; set; }
 
 		[Outlet]
@@ -160,11 +157,6 @@ namespace MacRAR
 			if (tbv_ColumnOS != null) {
 				tbv_ColumnOS.Dispose ();
 				tbv_ColumnOS = null;
-			}
-
-			if (tbv_ColumnTags != null) {
-				tbv_ColumnTags.Dispose ();
-				tbv_ColumnTags = null;
 			}
 
 			if (tbv_ColumnTamanho != null) {

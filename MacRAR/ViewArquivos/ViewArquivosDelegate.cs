@@ -20,10 +20,8 @@ namespace MacRAR
 
 		public override NSView GetViewForItem (NSTableView tableView, NSTableColumn tableColumn, nint row)
 		{
-			bool flagNovo = false;
 			NSTableCellView view = (NSTableCellView)tableView.MakeView (tableColumn.Title, this);
 			if (view == null) {
-				flagNovo = true;
 				view = new NSTableCellView ();
 				if (tableColumn.Title == "Nome") {
 					view.ImageView = new NSImageView (new CGRect (0, 0, 17, 17));
@@ -38,12 +36,8 @@ namespace MacRAR
 				view.TextField.BackgroundColor = NSColor.Clear;
 				view.TextField.Bordered = false;
 				view.TextField.Selectable = false;
-				view.TextField.Editable = true;
-
+				view.TextField.Editable = false;
 				view.TextField.EditingEnded += (sender, e) => {
-
-					// Take action based on type
-
 					switch(view.Identifier) {
 					case "Nome":
 						DataSource.ViewArquivos [(int)view.TextField.Tag].Nome = view.TextField.StringValue;
@@ -75,25 +69,17 @@ namespace MacRAR
 					case "Compressor":
 						DataSource.ViewArquivos [(int)view.TextField.Tag].Compressor = view.TextField.StringValue;
 						break;
-					case "Tags":
-						DataSource.ViewArquivos [(int)view.TextField.Tag].Tags  = view.TextField.StringValue;
-						break;
 					}
 				};
 			}
 
 			// Tag view
 			view.TextField.Tag = row;
-			clsViewArquivos cvarq = null;
-			// Setup view based on the column selected
 			switch (tableColumn.Title) {
 			case "Nome":
-				cvarq = new clsViewArquivos ();
-				if (flagNovo) {
-					cvarq.SetStateArquivo (tableView.GetRowView (row, false), view, view.ImageView.Tag);
-				} else {
-
-				}
+				clsViewArquivos cvarq = new clsViewArquivos ();
+				string tagArquivo = cvarq.GetTagsArquivo ((ViewArquivosDataSource)tableView.DataSource, (int)row);
+				cvarq.SetStateArquivo (tableView.GetRowView (row, false), view,Convert.ToInt32(tagArquivo));
 				cvarq = null;
 				view.TextField.Alignment = NSTextAlignment.Left ;
 				view.TextField.StringValue = DataSource.ViewArquivos [(int)row].Nome;
@@ -133,15 +119,6 @@ namespace MacRAR
 			case "Compressor":
 				view.TextField.Alignment = NSTextAlignment.Left;
 				view.TextField.StringValue = DataSource.ViewArquivos [(int)row].Compressor;
-				break;
-			case "Tags":
-				cvarq = new clsViewArquivos ();
-				if (flagNovo) {
-					cvarq.SetTagsArquivo (view.TextField, "0");
-				} else {
-					cvarq.SetTagsArquivo (view.TextField, view.TextField.StringValue);
-				}
-				cvarq = null;
 				break;
 			}
 			return view;

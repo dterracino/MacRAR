@@ -80,7 +80,7 @@ namespace MacRAR
 									viewArquivos.OS = colunas [5].Substring (colunas [5].IndexOf (":") + 1).Trim();
 									viewArquivos.Compressor = colunas [6].Substring (colunas [6].IndexOf (":") + 1).Trim();
 								}
-								viewArquivos.Tags = "";
+								viewArquivos.Tags = "0";
 								datasource.ViewArquivos.Add (viewArquivos);
 								viewArquivos = null;
 							}
@@ -96,7 +96,7 @@ namespace MacRAR
 							InformativeText = "Não foi possível processar o arquivo:\r\n" + path,
 							MessageText = "Abrir Arquivo", 
 						};
-						alert.BeginSheet (window);
+						alert.RunSheetModal (window);
 					}
 				}
 			}
@@ -106,6 +106,11 @@ namespace MacRAR
 
 		public void ExtractRAR()
 		{
+			var dlg = new NSSavePanel ();
+			dlg.Title = "Selecione o local de destino";
+			dlg.CanCreateDirectories = true;
+			dlg.RunModal ();
+
 
 		}
 

@@ -60,13 +60,6 @@ namespace MacRAR
 			// Compactado = 0
 			// Excluido = 1
 			// Adicionado = 2
-			// Desfazer = 3
-
-			NSTableCellView tagView = (NSTableCellView)tbv.ViewAtColumn(tbv.NumberOfColumns - 1);
-
-			if (tagView != null) {
-				string values = tagView.TextField.StringValue;
-			}
 
 			switch (state) {
 			case 0:
@@ -81,36 +74,42 @@ namespace MacRAR
 				tbv.BackgroundColor = NSColor.Green;
 				view.ImageView.Image = NSImage.ImageNamed ("Adicionado.ico");
 				break;
-			case 3:
-
-
-
-				break;
-
 			}
 		}
-
-		public void SetTagsArquivo(NSTextField column,string value,bool soma = false)
+			
+		public string GetTagsArquivo(ViewArquivosDataSource datasource, int row, int pos = 0)
 		{
-			if (soma) {
-				column.StringValue = column.StringValue + value;
-			} else {
-				column.StringValue = value;
-			}
-		}
-
-		public string GetTagsArquivo(NSTableView tbv,nint row)
-		{
-			NSTableCellView cell = (NSTableCellView)tbv.GetView(tbv.RowCount -1, row, false);
-			string tags = cell.TextField.StringValue;
-			string tag = string.Empty;
-			if (tags.IndexOf ("|") > 0) {
-				string[] aTags = tags.Split ('|');
-				tag = aTags [0];
-			} else {
-				tag = tags;
+			string tag = "0";
+			string cell = datasource.ViewArquivos [row].Tags;
+			if (cell.Length > 0) {
+				if (cell.IndexOf ("|") > 0) {
+					string[] aTags = cell.Split ('|');
+					if(pos != 0) {
+						pos = aTags.Length - 1;
+					}
+					tag = aTags [pos];
+				} else {
+					tag = cell;
+				}
 			}
 			return tag;
+		}
+
+		public void SetTagsArquivo(ViewArquivosDataSource datasource, int row, string value)
+		{
+			string cell = datasource.ViewArquivos [row].Tags;
+			if (cell.Length > 0) {
+				string tag = string.Empty;
+				if (cell.IndexOf ("|") > 0) {
+					string[] aTags = cell.Split ('|');
+					//tag = aTags [aTags.Length - 1];
+					tag = aTags [0];
+				} else {
+					tag = cell;
+				}
+				cell = tag;
+			}
+			datasource.ViewArquivos [row].Tags = value + "|" + cell;
 		}
 
 //		public void HideShowTags(NSTableView tbView, bool hidden)
