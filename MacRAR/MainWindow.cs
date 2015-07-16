@@ -133,9 +133,7 @@ namespace MacRAR
 
 		partial void tb_ActExtrair (NSObject sender)
 		{
-			clsOpenRAR orar = new clsOpenRAR();
-			orar.ExtractRAR();
-			orar=null;
+			this.procBtn(3);
 		}
 
 		partial void tb_actAtualizar (NSObject sender)
@@ -166,19 +164,28 @@ namespace MacRAR
 					foreach (nint lRow in nRows) {
 						switch (state) {
 						case 1:
-						aState = "1";
+							aState = "1";
 							break;
 						case 2:
 							aState = cvarqs.GetTagsArquivo (datasource, (int)lRow, 1);
 							break;
+						case 3:
+							break;
+						}
+						if(state != 3){
+							cvarqs.SetTagsArquivo (datasource, (int)lRow, aState);
+						}else {
+							clsOpenRAR orar = new clsOpenRAR();
+							orar.ExtractRAR(this, this.tbv_Arquivos);
+							orar=null;
 						}
 
-						cvarqs.SetTagsArquivo (datasource, (int)lRow, aState);
 						//					clsViewArquivos clvarq = new clsViewArquivos();
 						//					clvarq.SetStateArquivo(tbv_Arquivos.GetRowView(lRow,false),(NSTableCellView)tbv_Arquivos.GetView(0,lRow,false),1);
 						//
 						//
 						//					clvarq=null;
+
 					}
 					cvarqs = null;
 					datasource = null;
@@ -186,19 +193,26 @@ namespace MacRAR
 				}
 			} else {
 				string mText = string.Empty;
-
+				string iText = string.Empty;
 				switch (state) {
 				case 1:
-					mText = "Excluir Arquivo(s)";
+					mText = "Remover Arquivo(s)";
+					iText = "Selecione ao menos um aquivo para Remover !";
 					break;
 				case 2:
 					mText = "Desfazer Ação";
+					iText = "Selecione ao menos um arquivo para\r\n Desfazer a Ação !";
+					break;
+				case 3:
+					mText = "Extrair Arquivos";
+					iText = "Selecione ao menos um arquivo para Extrair !";
 					break;
 				}
 
 				NSAlert alert = new NSAlert () {
+					
 					AlertStyle = NSAlertStyle.Warning,
-					InformativeText = "Selecione ao menos um arquivo !",
+					InformativeText = iText,
 					MessageText = mText , 
 				};
 				alert.RunSheetModal (this);

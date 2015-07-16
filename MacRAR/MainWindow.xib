@@ -164,8 +164,8 @@
 						</object>
 						<object class="NSToolbarItem" key="9A05064E-8507-400E-B4E8-84ACA55B0D93" id="613309579">
 							<string key="NSToolbarItemIdentifier">9A05064E-8507-400E-B4E8-84ACA55B0D93</string>
-							<string key="NSToolbarItemLabel">Desfazer</string>
-							<string key="NSToolbarItemPaletteLabel">Desfazer</string>
+							<string key="NSToolbarItemLabel">Desfazer Ação</string>
+							<string key="NSToolbarItemPaletteLabel">Desfazer Ação</string>
 							<string key="NSToolbarItemToolTip"/>
 							<nil key="NSToolbarItemView"/>
 							<object class="NSCustomResource" key="NSToolbarItemImage">
@@ -283,7 +283,7 @@
 							</object>
 						</object>
 					</dictionary>
-					<array class="NSMutableArray" key="NSToolbarIBAllowedItems">
+					<array key="NSToolbarIBAllowedItems">
 						<reference ref="431574318"/>
 						<reference ref="351410650"/>
 						<reference ref="795667077"/>
@@ -639,6 +639,7 @@
 															<string key="NSFrameSize">{200, 17}</string>
 															<reference key="NSSuperview" ref="441237877"/>
 															<reference key="NSWindow"/>
+															<reference key="NSNextKeyView" ref="631609313"/>
 															<string key="NSAntiCompressionPriority">{250, 750}</string>
 															<bool key="NSEnabled">YES</bool>
 															<object class="NSTextFieldCell" key="NSCell" id="232669565">
@@ -663,7 +664,7 @@
 											<string key="NSFrameSize">{1450, 327}</string>
 											<reference key="NSSuperview" ref="1050885560"/>
 											<reference key="NSWindow"/>
-											<reference key="NSNextKeyView" ref="474530152"/>
+											<reference key="NSNextKeyView" ref="540030988"/>
 											<string key="NSReuseIdentifierKey">_NS:13</string>
 											<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
 											<bool key="NSControlAllowsExpansionToolTips">YES</bool>
@@ -1106,7 +1107,7 @@
 							<string key="NSFrame">{{-1, 28}, {753, 360}}</string>
 							<reference key="NSSuperview" ref="312036702"/>
 							<reference key="NSWindow"/>
-							<reference key="NSNextKeyView" ref="1050885560"/>
+							<reference key="NSNextKeyView" ref="474530152"/>
 							<string key="NSReuseIdentifierKey">_NS:9</string>
 							<int key="NSsFlags">133810</int>
 							<reference key="NSVScroller" ref="631609313"/>
@@ -1267,6 +1268,7 @@
 							<string key="NSFrame">{{501, 5}, {87, 17}}</string>
 							<reference key="NSSuperview" ref="312036702"/>
 							<reference key="NSWindow"/>
+							<reference key="NSNextKeyView"/>
 							<string key="NSReuseIdentifierKey">_NS:526</string>
 							<string key="NSHuggingPriority">{251, 750}</string>
 							<bool key="NSEnabled">YES</bool>

@@ -13,7 +13,7 @@ namespace MacRAR
 		{
 			string[] filetypes = {"rar"};
 			clsIOPrefs ioPrefs = new clsIOPrefs ();
-			string path = ioPrefs.OpenFileDialog (window, filetypes);
+			string path = ioPrefs.OpenFileDialog (window, filetypes,"Selecione");
 			if (path.Length > 0) {
 				string txtRAR = ioPrefs.GetStringValue ("CaminhoRAR");
 				if (txtRAR.Length > 0) {
@@ -104,14 +104,23 @@ namespace MacRAR
 			return path;
 		}
 
-		public void ExtractRAR()
+		public void ExtractRAR(MainWindow  window, NSTableView TableView)
 		{
-			var dlg = new NSSavePanel ();
-			dlg.Title = "Selecione o local de destino";
-			dlg.CanCreateDirectories = true;
-			dlg.RunModal ();
 
+			string[] filetypes = {""};
+			clsIOPrefs ioPrefs = new clsIOPrefs ();
+			string path = ioPrefs.OpenFileDialog (window, filetypes, "Selecione um Local", true, false);
+			if (path.Length > 0) {
+				
 
+			} else {
+				NSAlert alert = new NSAlert () {
+					AlertStyle = NSAlertStyle.Warning,
+					InformativeText = "Selecione o destino para onde extrair os arquivos !",
+					MessageText = "Extrair Arquivos", 
+				};
+				alert.RunSheetModal (window);
+			}
 		}
 
 	}

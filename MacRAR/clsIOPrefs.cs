@@ -37,19 +37,21 @@ namespace MacRAR
 		public string OpenFileDialog(NSWindow window)
 		{
 			string[] FileTypes = { "" };
-			return this.OpenFileDialog (window, FileTypes);
+			return this.OpenFileDialog (window, FileTypes,"Selecione");
 		}
 
-		public string OpenFileDialog (NSWindow window, string[] FileTypes)
+		public string OpenFileDialog (NSWindow window, string[] FileTypes, string title, bool canchoosedirectories = false, bool canchoosefiles = true)
 		{
 			string path = string.Empty;
 			try {
 				NSOpenPanel dlg = NSOpenPanel.OpenPanel;
 				//dlg.Prompt = "Selecione um Arquivo";
-				dlg.Title = "Selecione";
-				dlg.CanChooseFiles = true;
-				dlg.CanChooseDirectories = false;
+				dlg.Title = title;
+				dlg.CanChooseFiles = canchoosefiles;
+				dlg.CanChooseDirectories = canchoosedirectories;
 				dlg.AllowedFileTypes = FileTypes; 
+				dlg.AllowsMultipleSelection=false;
+				dlg.ResolvesAliases=true;
 				dlg.ReleasedWhenClosed = true;
 				nint retDlg = dlg.RunModal ();
 				if (retDlg == 1) {
