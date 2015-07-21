@@ -53,6 +53,31 @@ namespace MacRAR
 				dlg.AllowsMultipleSelection=false;
 				dlg.ResolvesAliases=true;
 				dlg.ReleasedWhenClosed = true;
+
+//				dlg.BeginSheet(window, (i) => { 
+//					try
+//					{
+//						if(dlg.Url != null)
+//						{
+//
+//
+//							var urlString = dlg.Url.Path;
+//
+//							if(!string.IsNullOrEmpty(urlString))
+//							{
+//								Console.WriteLine(urlString);
+//							}
+//						}
+//					}
+//					finally
+//					{
+//						dlg.Dispose();
+//					}
+//				});
+//
+
+
+
 				nint retDlg = dlg.RunModal ();
 				if (retDlg == 1) {
 					NSUrl url = dlg.Urls [0];
@@ -70,6 +95,10 @@ namespace MacRAR
 			}
 			return path;
 		}
+
+
+
+
 	}
 }
 

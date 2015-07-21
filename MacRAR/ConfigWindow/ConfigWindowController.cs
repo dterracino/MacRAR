@@ -17,13 +17,24 @@ namespace MacRAR
 		[Outlet]
 		public NSTextField txt_UNRAR { get; set; }
 
+		[Outlet]
+		AppKit.NSSlider sld_Compressao { get; set; }
+
+
 		public ConfigWindowController ()
 		{
 			NSBundle.LoadNib ("ConfigWindow", this);
 			clsIOPrefs ioPrefs = new clsIOPrefs ();
 			this.txt_RAR.StringValue  = ioPrefs.GetStringValue ("CaminhoRAR");
 			this.txt_UNRAR.StringValue  = ioPrefs.GetStringValue ("CaminhoUNRAR");
+			string retConv = ioPrefs.GetStringValue ("Compressao");
+			if (retConv.Length > 0) {
+				this.sld_Compressao.IntValue =Convert.ToInt32(ioPrefs.GetStringValue ("Compressao"));
+			} else {
+				this.sld_Compressao.IntValue = 5;
+			}
 			ioPrefs = null;
+			this.sld_Compressao.AllowsTickMarkValuesOnly = true;
 		}
 
 		public void ShowConfigWindow(NSWindow inWindow) {
@@ -45,6 +56,11 @@ namespace MacRAR
 			clsIOPrefs ioPrefs = new clsIOPrefs ();
 			ioPrefs.SetStringValue("CaminhoRAR",this.txt_RAR.StringValue);
 			ioPrefs.SetStringValue ("CaminhoUNRAR", this.txt_UNRAR.StringValue);
+			int sldVlr = this.sld_Compressao.IntValue;
+			if (sldVlr < 5) {
+				sldVlr = sldVlr + 1;
+			}
+			ioPrefs.SetStringValue ("Compressao", sldVlr.ToString());
 			ioPrefs = null;
 			CloseConfigWindow();
 		}

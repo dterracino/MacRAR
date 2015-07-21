@@ -58,6 +58,7 @@
     <Folder Include="Resources\" />
     <Folder Include="ViewArquivos\" />
     <Folder Include="ConfigWindow\" />
+    <Folder Include="ProgressWindow\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainWindow.cs" />
@@ -74,7 +75,6 @@
       <DependentUpon>AppDelegate.cs</DependentUpon>
     </Compile>
     <Compile Include="clsIOPrefs.cs" />
-    <Compile Include="clsOpenRAR.cs" />
     <Compile Include="ViewArquivos\clsViewArquivos.cs" />
     <Compile Include="ViewArquivos\ViewArquivosDataSource.cs" />
     <Compile Include="ViewArquivos\ViewArquivosDelegate.cs" />
@@ -84,6 +84,7 @@
     </Compile>
     <Compile Include="ConfigWindow\ConfigWindowController.cs" />
     <Compile Include="ActivatableItem.cs" />
+    <Compile Include="clsRAR.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="MainWindow.xib" />
@@ -108,5 +109,6 @@
     <BundleResource Include="Resources\Excluido.ico" />
     <BundleResource Include="Resources\Compactado.ico" />
     <BundleResource Include="Resources\Desfazer.png" />
+    <BundleResource Include="Resources\normal_archive.png" />
   </ItemGroup>
 </Project>

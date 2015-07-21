@@ -111,9 +111,7 @@ namespace MacRAR
 
 		partial void tb_actAbrir (Foundation.NSObject sender)
 		{
-			clsOpenRAR oRAR = new clsOpenRAR ();
-			rarFile = oRAR.OpenRAR (this, this.tbv_Arquivos);
-			oRAR = null;
+			this.procBtn(4);
 		}
 
 		partial void tb_ActSair (Foundation.NSObject sender)
@@ -154,68 +152,103 @@ namespace MacRAR
 
 		private void procBtn(int state = 1)
 		{
-			NSIndexSet nSelRows = this.tbv_Arquivos.SelectedRows ;
-			if (nSelRows.Count > 0) {
-				nuint[] nRows = nSelRows.ToArray ();
-				if (nRows.Length > 0) {
-					ViewArquivosDataSource datasource = (ViewArquivosDataSource)this.tbv_Arquivos.DataSource;
-					clsViewArquivos cvarqs = new clsViewArquivos ();
-					string aState = string.Empty;
-					foreach (nint lRow in nRows) {
-						switch (state) {
-						case 1:
-							aState = "1";
-							break;
-						case 2:
-							aState = cvarqs.GetTagsArquivo (datasource, (int)lRow, 1);
-							break;
-						case 3:
-							break;
-						}
-						if(state != 3){
-							cvarqs.SetTagsArquivo (datasource, (int)lRow, aState);
-						}else {
-							clsOpenRAR orar = new clsOpenRAR();
-							orar.ExtractRAR(this, this.tbv_Arquivos);
-							orar=null;
-						}
 
-						//					clsViewArquivos clvarq = new clsViewArquivos();
-						//					clvarq.SetStateArquivo(tbv_Arquivos.GetRowView(lRow,false),(NSTableCellView)tbv_Arquivos.GetView(0,lRow,false),1);
-						//
-						//
-						//					clvarq=null;
-
+			if (state == 4) {
+				string[] filetypes = {"rar"};
+				NSOpenPanel dlg = NSOpenPanel.OpenPanel;
+				dlg.Title = "Selecione";
+				dlg.CanChooseFiles = true;
+				dlg.CanChooseDirectories = false;
+				dlg.AllowedFileTypes =filetypes; 
+				dlg.AllowsMultipleSelection=false;
+				dlg.ResolvesAliases=true;
+				dlg.ReleasedWhenClosed = true;
+				dlg.BeginSheet(this, (i) => { 
+					try
+					{
+						if(dlg.Url != null)
+						{
+							var urlString = dlg.Url.Path;
+							if(!string.IsNullOrEmpty(urlString))
+							{
+								clsRAR orar = new clsRAR();
+								orar.OpenRAR(urlString, this, this.tbv_Arquivos);
+								orar=null;
+							}
+						}
 					}
-					cvarqs = null;
-					datasource = null;
-					this.tbv_Arquivos.ReloadData ();
-				}
+					finally
+					{
+						dlg.Dispose();
+					}
+				});
 			} else {
-				string mText = string.Empty;
-				string iText = string.Empty;
-				switch (state) {
-				case 1:
-					mText = "Remover Arquivo(s)";
-					iText = "Selecione ao menos um aquivo para Remover !";
-					break;
-				case 2:
-					mText = "Desfazer Ação";
-					iText = "Selecione ao menos um arquivo para\r\n Desfazer a Ação !";
-					break;
-				case 3:
-					mText = "Extrair Arquivos";
-					iText = "Selecione ao menos um arquivo para Extrair !";
-					break;
+				NSIndexSet nSelRows = this.tbv_Arquivos.SelectedRows ;
+				if (nSelRows.Count > 0) {
+					nuint[] nRows = nSelRows.ToArray ();
+					if (nRows.Length > 0) {
+						ViewArquivosDataSource datasource = (ViewArquivosDataSource)this.tbv_Arquivos.DataSource;
+						clsViewArquivos cvarqs = new clsViewArquivos ();
+						string aState = string.Empty;
+						foreach (nint lRow in nRows) {
+							switch (state) {
+							case 1:
+								aState = "1";
+								break;
+							case 2:
+								aState = cvarqs.GetTagsArquivo (datasource, (int)lRow, 1);
+								break;
+							case 3:
+								break;
+							}
+							if(state != 3){
+								cvarqs.SetTagsArquivo (datasource, (int)lRow, aState);
+							}else {
+
+
+								//							clsOpenRAR orar = new clsOpenRAR();
+								//							orar.ExtractRAR(this, this.tbv_Arquivos);
+								//							orar=null;
+							}
+
+							//					clsViewArquivos clvarq = new clsViewArquivos();
+							//					clvarq.SetStateArquivo(tbv_Arquivos.GetRowView(lRow,false),(NSTableCellView)tbv_Arquivos.GetView(0,lRow,false),1);
+							//
+							//
+							//					clvarq=null;
+
+						}
+						cvarqs = null;
+						datasource = null;
+						this.tbv_Arquivos.ReloadData ();
+					}
+				} else {
+					string mText = string.Empty;
+					string iText = string.Empty;
+					switch (state) {
+					case 1:
+						mText = "Remover Arquivo(s)";
+						iText = "Selecione ao menos um aquivo para Remover !";
+						break;
+					case 2:
+						mText = "Desfazer Ação";
+						iText = "Selecione ao menos um arquivo para\r\n Desfazer a Ação !";
+						break;
+					case 3:
+						mText = "Extrair Arquivos";
+						iText = "Selecione ao menos um arquivo para Extrair !";
+						break;
+					}
+
+					NSAlert alert = new NSAlert () {
+
+						AlertStyle = NSAlertStyle.Warning,
+						InformativeText = iText,
+						MessageText = mText , 
+					};
+					alert.RunSheetModal (this);
 				}
 
-				NSAlert alert = new NSAlert () {
-					
-					AlertStyle = NSAlertStyle.Warning,
-					InformativeText = iText,
-					MessageText = mText , 
-				};
-				alert.RunSheetModal (this);
 			}
 		}
 

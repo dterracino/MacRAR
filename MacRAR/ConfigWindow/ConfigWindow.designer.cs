@@ -13,6 +13,9 @@ namespace MacRAR
 	partial class ConfigWindow
 	{
 		[Outlet]
+		AppKit.NSSlider sld_Compressao { get; set; }
+
+		[Outlet]
 		AppKit.NSTextField txt_RAR { get; set; }
 
 		[Outlet]
@@ -32,9 +35,17 @@ namespace MacRAR
 
 		[Action ("btn_Confirma:")]
 		partial void btn_Confirma (Foundation.NSObject sender);
+
+		[Action ("sld_actCompressao:")]
+		partial void sld_actCompressao (Foundation.NSObject sender);
 		
 		void ReleaseDesignerOutlets ()
 		{
+			if (sld_Compressao != null) {
+				sld_Compressao.Dispose ();
+				sld_Compressao = null;
+			}
+
 			if (txt_RAR != null) {
 				txt_RAR.Dispose ();
 				txt_RAR = null;
