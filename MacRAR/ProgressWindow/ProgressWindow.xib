@@ -14,6 +14,8 @@
 			<string>NSButton</string>
 			<string>NSButtonCell</string>
 			<string>NSCustomObject</string>
+			<string>NSImageCell</string>
+			<string>NSImageView</string>
 			<string>NSProgressIndicator</string>
 			<string>NSTextField</string>
 			<string>NSTextFieldCell</string>
@@ -26,7 +28,7 @@
 		<dictionary class="NSMutableDictionary" key="IBDocument.Metadata"/>
 		<array class="NSMutableArray" key="IBDocument.RootObjects" id="1000">
 			<object class="NSCustomObject" id="1001">
-				<string key="NSClassName">progressWindow</string>
+				<string key="NSClassName">ProgressWindow</string>
 			</object>
 			<object class="NSCustomObject" id="1003">
 				<string key="NSClassName">FirstResponder</string>
@@ -34,77 +36,40 @@
 			<object class="NSCustomObject" id="1004">
 				<string key="NSClassName">NSApplication</string>
 			</object>
-			<object class="NSWindowTemplate" id="388929911">
-				<int key="NSWindowStyleMask">81</int>
+			<object class="NSWindowTemplate" id="618784512">
+				<int key="NSWindowStyleMask">17</int>
 				<int key="NSWindowBacking">2</int>
-				<string key="NSWindowRect">{{167, 107}, {566, 104}}</string>
-				<int key="NSWTFlags">1148718080</int>
-				<string key="NSWindowTitle">Window</string>
-				<string key="NSWindowClass">progressWindow</string>
+				<string key="NSWindowRect">{{167, 107}, {565, 160}}</string>
+				<int key="NSWTFlags">1148722176</int>
+				<string key="NSWindowTitle"/>
+				<string key="NSWindowClass">ProgressWindow</string>
 				<nil key="NSViewClass"/>
 				<nil key="NSUserInterfaceItemIdentifier"/>
-				<object class="NSView" key="NSWindowView" id="789781408">
+				<object class="NSView" key="NSWindowView" id="270702977">
 					<reference key="NSNextResponder"/>
 					<int key="NSvFlags">256</int>
 					<array class="NSMutableArray" key="NSSubviews">
-						<object class="NSProgressIndicator" id="1028326895">
-							<reference key="NSNextResponder" ref="789781408"/>
+						<object class="NSTextField" id="647261651">
+							<reference key="NSNextResponder" ref="270702977"/>
 							<int key="NSvFlags">268</int>
-							<string key="NSFrame">{{24, 19}, {522, 20}}</string>
-							<reference key="NSSuperview" ref="789781408"/>
+							<string key="NSFrame">{{74, 46}, {372, 99}}</string>
+							<reference key="NSSuperview" ref="270702977"/>
 							<reference key="NSWindow"/>
-							<reference key="NSNextKeyView"/>
+							<reference key="NSNextKeyView" ref="247403024"/>
 							<string key="NSReuseIdentifierKey">_NS:9</string>
-							<string key="NSHuggingPriority">{250, 250}</string>
-							<int key="NSpiFlags">16399</int>
-							<double key="NSMaxValue">100</double>
-						</object>
-						<object class="NSButton" id="408655674">
-							<reference key="NSNextResponder" ref="789781408"/>
-							<int key="NSvFlags">268</int>
-							<string key="NSFrame">{{449, 56}, {103, 32}}</string>
-							<reference key="NSSuperview" ref="789781408"/>
-							<reference key="NSWindow"/>
-							<reference key="NSNextKeyView" ref="1028326895"/>
-							<string key="NSReuseIdentifierKey">_NS:9</string>
+							<string key="NSAntiCompressionPriority">{250, 750}</string>
 							<bool key="NSEnabled">YES</bool>
-							<object class="NSButtonCell" key="NSCell" id="976395713">
+							<object class="NSTextFieldCell" key="NSCell" id="940371704">
 								<int key="NSCellFlags">67108864</int>
-								<int key="NSCellFlags2">134217728</int>
-								<string key="NSContents">Cancelar</string>
-								<object class="NSFont" key="NSSupport" id="424180765">
+								<int key="NSCellFlags2">272891904</int>
+								<string key="NSContents">Multiline Label</string>
+								<object class="NSFont" key="NSSupport" id="480372686">
 									<bool key="IBIsSystemFont">YES</bool>
 									<double key="NSSize">13</double>
 									<int key="NSfFlags">1044</int>
 								</object>
 								<string key="NSCellIdentifier">_NS:9</string>
-								<reference key="NSControlView" ref="408655674"/>
-								<int key="NSButtonFlags">-2038284288</int>
-								<int key="NSButtonFlags2">129</int>
-								<string key="NSAlternateContents"/>
-								<string key="NSKeyEquivalent"/>
-								<int key="NSPeriodicDelay">200</int>
-								<int key="NSPeriodicInterval">25</int>
-							</object>
-							<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
-						</object>
-						<object class="NSTextField" id="658362309">
-							<reference key="NSNextResponder" ref="789781408"/>
-							<int key="NSvFlags">268</int>
-							<string key="NSFrame">{{22, 67}, {427, 17}}</string>
-							<reference key="NSSuperview" ref="789781408"/>
-							<reference key="NSWindow"/>
-							<reference key="NSNextKeyView" ref="408655674"/>
-							<string key="NSReuseIdentifierKey">_NS:526</string>
-							<string key="NSHuggingPriority">{251, 750}</string>
-							<bool key="NSEnabled">YES</bool>
-							<object class="NSTextFieldCell" key="NSCell" id="681443882">
-								<int key="NSCellFlags">68157504</int>
-								<int key="NSCellFlags2">272630784</int>
-								<string key="NSContents">Processando arquivo</string>
-								<reference key="NSSupport" ref="424180765"/>
-								<string key="NSCellIdentifier">_NS:526</string>
-								<reference key="NSControlView" ref="658362309"/>
+								<reference key="NSControlView" ref="647261651"/>
 								<object class="NSColor" key="NSBackgroundColor">
 									<int key="NSColorSpace">6</int>
 									<string key="NSCatalogName">System</string>
@@ -125,16 +90,87 @@
 								</object>
 							</object>
 							<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
+							<bool key="NSControlAutosetMaxLayoutWidth">YES</bool>
 							<int key="NSTextFieldAlignmentRectInsetsVersion">1</int>
 						</object>
+						<object class="NSImageView" id="145076229">
+							<reference key="NSNextResponder" ref="270702977"/>
+							<int key="NSvFlags">268</int>
+							<set class="NSMutableSet" key="NSDragTypes">
+								<string>Apple PDF pasteboard type</string>
+								<string>Apple PICT pasteboard type</string>
+								<string>Apple PNG pasteboard type</string>
+								<string>NSFilenamesPboardType</string>
+								<string>NeXT Encapsulated PostScript v1.2 pasteboard type</string>
+								<string>NeXT TIFF v4.0 pasteboard type</string>
+							</set>
+							<string key="NSFrame">{{20, 97}, {48, 48}}</string>
+							<reference key="NSSuperview" ref="270702977"/>
+							<reference key="NSWindow"/>
+							<reference key="NSNextKeyView" ref="647261651"/>
+							<string key="NSReuseIdentifierKey">_NS:9</string>
+							<string key="NSHuggingPriority">{251, 251}</string>
+							<bool key="NSEnabled">YES</bool>
+							<object class="NSImageCell" key="NSCell" id="53316097">
+								<int key="NSCellFlags">0</int>
+								<int key="NSCellFlags2">33554432</int>
+								<object class="NSCustomResource" key="NSContents">
+									<string key="NSClassName">NSImage</string>
+									<string key="NSResourceName">icon</string>
+								</object>
+								<string key="NSCellIdentifier">_NS:9</string>
+								<int key="NSAlign">0</int>
+								<int key="NSScale">0</int>
+								<int key="NSStyle">0</int>
+								<bool key="NSAnimates">NO</bool>
+							</object>
+							<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
+							<bool key="NSEditable">YES</bool>
+						</object>
+						<object class="NSButton" id="247403024">
+							<reference key="NSNextResponder" ref="270702977"/>
+							<int key="NSvFlags">268</int>
+							<string key="NSFrame">{{446, 117}, {105, 32}}</string>
+							<reference key="NSSuperview" ref="270702977"/>
+							<reference key="NSWindow"/>
+							<string key="NSReuseIdentifierKey">_NS:9</string>
+							<bool key="NSEnabled">YES</bool>
+							<object class="NSButtonCell" key="NSCell" id="537723274">
+								<int key="NSCellFlags">67108864</int>
+								<int key="NSCellFlags2">134217728</int>
+								<string key="NSContents">Cancelar</string>
+								<reference key="NSSupport" ref="480372686"/>
+								<string key="NSCellIdentifier">_NS:9</string>
+								<reference key="NSControlView" ref="247403024"/>
+								<int key="NSButtonFlags">-2038284288</int>
+								<int key="NSButtonFlags2">129</int>
+								<string key="NSAlternateContents"/>
+								<string key="NSKeyEquivalent"/>
+								<int key="NSPeriodicDelay">200</int>
+								<int key="NSPeriodicInterval">25</int>
+							</object>
+							<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
+						</object>
+						<object class="NSProgressIndicator" id="464085070">
+							<reference key="NSNextResponder" ref="270702977"/>
+							<int key="NSvFlags">268</int>
+							<string key="NSFrame">{{25, 19}, {525, 20}}</string>
+							<reference key="NSSuperview" ref="270702977"/>
+							<reference key="NSWindow"/>
+							<string key="NSReuseIdentifierKey">_NS:9</string>
+							<string key="NSHuggingPriority">{250, 250}</string>
+							<int key="NSpiFlags">16397</int>
+							<double key="NSMaxValue">100</double>
+						</object>
 					</array>
-					<string key="NSFrameSize">{566, 104}</string>
+					<string key="NSFrameSize">{565, 160}</string>
 					<reference key="NSSuperview"/>
 					<reference key="NSWindow"/>
-					<reference key="NSNextKeyView" ref="658362309"/>
+					<reference key="NSNextKeyView" ref="145076229"/>
 					<string key="NSReuseIdentifierKey">_NS:21</string>
 				</object>
 				<string key="NSScreenRect">{{0, 0}, {1680, 1027}}</string>
+				<string key="NSMaxSize">{10000000000000, 10000000000000}</string>
 				<bool key="NSWindowIsRestorable">NO</bool>
 			</object>
 		</array>
@@ -144,41 +180,33 @@
 					<object class="IBOutletConnection" key="connection">
 						<string key="label">window</string>
 						<reference key="source" ref="1001"/>
-						<reference key="destination" ref="388929911"/>
+						<reference key="destination" ref="618784512"/>
+					</object>
+					<int key="connectionID">12</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">lbl_outProcArq</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="647261651"/>
 					</object>
 					<int key="connectionID">13</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
-						<string key="label">pb_Arquivos</string>
+						<string key="label">pgr_outProgressBar</string>
 						<reference key="source" ref="1001"/>
-						<reference key="destination" ref="1028326895"/>
+						<reference key="destination" ref="464085070"/>
 					</object>
 					<int key="connectionID">14</int>
 				</object>
 				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">btn_outCancela</string>
-						<reference key="source" ref="1001"/>
-						<reference key="destination" ref="408655674"/>
-					</object>
-					<int key="connectionID">17</int>
-				</object>
-				<object class="IBConnectionRecord">
 					<object class="IBActionConnection" key="connection">
-						<string key="label">btn_actCancela:</string>
+						<string key="label">btn_actCancelar:</string>
 						<reference key="source" ref="1001"/>
-						<reference key="destination" ref="408655674"/>
+						<reference key="destination" ref="247403024"/>
 					</object>
-					<int key="connectionID">18</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">lbl_ProcArq</string>
-						<reference key="source" ref="1001"/>
-						<reference key="destination" ref="658362309"/>
-					</object>
-					<int key="connectionID">19</int>
+					<int key="connectionID">15</int>
 				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -209,52 +237,66 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">3</int>
-						<reference key="object" ref="388929911"/>
+						<reference key="object" ref="618784512"/>
 						<array class="NSMutableArray" key="children">
-							<reference ref="789781408"/>
+							<reference ref="270702977"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">4</int>
-						<reference key="object" ref="789781408"/>
+						<reference key="object" ref="270702977"/>
 						<array class="NSMutableArray" key="children">
-							<reference ref="408655674"/>
-							<reference ref="658362309"/>
-							<reference ref="1028326895"/>
+							<reference ref="145076229"/>
+							<reference ref="647261651"/>
+							<reference ref="247403024"/>
+							<reference ref="464085070"/>
 						</array>
-						<reference key="parent" ref="388929911"/>
+						<reference key="parent" ref="618784512"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">5</int>
-						<reference key="object" ref="1028326895"/>
-						<reference key="parent" ref="789781408"/>
+						<reference key="object" ref="647261651"/>
+						<array class="NSMutableArray" key="children">
+							<reference ref="940371704"/>
+						</array>
+						<reference key="parent" ref="270702977"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">6</int>
+						<reference key="object" ref="940371704"/>
+						<reference key="parent" ref="647261651"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">7</int>
+						<reference key="object" ref="145076229"/>
+						<array class="NSMutableArray" key="children">
+							<reference ref="53316097"/>
+						</array>
+						<reference key="parent" ref="270702977"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">8</int>
-						<reference key="object" ref="408655674"/>
-						<array class="NSMutableArray" key="children">
-							<reference ref="976395713"/>
-						</array>
-						<reference key="parent" ref="789781408"/>
+						<reference key="object" ref="53316097"/>
+						<reference key="parent" ref="145076229"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">9</int>
-						<reference key="object" ref="976395713"/>
-						<reference key="parent" ref="408655674"/>
+						<reference key="object" ref="247403024"/>
+						<array class="NSMutableArray" key="children">
+							<reference ref="537723274"/>
+						</array>
+						<reference key="parent" ref="270702977"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">10</int>
-						<reference key="object" ref="658362309"/>
-						<array class="NSMutableArray" key="children">
-							<reference ref="681443882"/>
-						</array>
-						<reference key="parent" ref="789781408"/>
+						<reference key="object" ref="537723274"/>
+						<reference key="parent" ref="247403024"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">11</int>
-						<reference key="object" ref="681443882"/>
-						<reference key="parent" ref="658362309"/>
+						<reference key="object" ref="464085070"/>
+						<reference key="parent" ref="270702977"/>
 					</object>
 				</array>
 			</object>
@@ -264,12 +306,15 @@
 				<string key="-3.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="10.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="11.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="3.IBPersistedLastKnownCanvasPosition">{533, 193}</string>
+				<string key="3.IBPersistedLastKnownCanvasPosition">{443.5, 279}</string>
 				<string key="3.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<boolean value="NO" key="3.NSWindowTemplate.visibleAtLaunch"/>
 				<reference key="4.IBNSViewMetadataGestureRecognizers" ref="0"/>
 				<string key="4.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<boolean value="YES" key="5.IBNSControlSetsMaxLayoutWidthAtFirstLayoutMetadataKey"/>
 				<string key="5.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="6.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="7.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="8.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="9.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 			</dictionary>
@@ -277,72 +322,64 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">19</int>
+			<int key="maxID">15</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
 				<object class="IBPartialClassDescription">
-					<string key="className">progressWindow</string>
+					<string key="className">ProgressWindow</string>
 					<string key="superclassName">NSPanel</string>
 					<object class="NSMutableDictionary" key="actions">
-						<string key="NS.key.0">btn_actCancela:</string>
+						<string key="NS.key.0">btn_actCancelar:</string>
 						<string key="NS.object.0">id</string>
 					</object>
 					<object class="NSMutableDictionary" key="actionInfosByName">
-						<string key="NS.key.0">btn_actCancela:</string>
+						<string key="NS.key.0">btn_actCancelar:</string>
 						<object class="IBActionInfo" key="NS.object.0">
-							<string key="name">btn_actCancela:</string>
+							<string key="name">btn_actCancelar:</string>
 							<string key="candidateClassName">id</string>
 						</object>
 					</object>
 					<dictionary class="NSMutableDictionary" key="outlets">
-						<string key="btn_outCancela">NSButton</string>
-						<string key="lbl_ProcArq">NSTextField</string>
-						<string key="pb_Arquivos">NSProgressIndicator</string>
-						<string key="window">progressWindow</string>
+						<string key="lbl_outProcArq">NSTextField</string>
+						<string key="pgr_outProgressBar">NSProgressIndicator</string>
+						<string key="window">ProgressWindow</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<object class="IBToOneOutletInfo" key="btn_outCancela">
-							<string key="name">btn_outCancela</string>
-							<string key="candidateClassName">NSButton</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="lbl_ProcArq">
-							<string key="name">lbl_ProcArq</string>
+						<object class="IBToOneOutletInfo" key="lbl_outProcArq">
+							<string key="name">lbl_outProcArq</string>
 							<string key="candidateClassName">NSTextField</string>
 						</object>
-						<object class="IBToOneOutletInfo" key="pb_Arquivos">
-							<string key="name">pb_Arquivos</string>
+						<object class="IBToOneOutletInfo" key="pgr_outProgressBar">
+							<string key="name">pgr_outProgressBar</string>
 							<string key="candidateClassName">NSProgressIndicator</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="window">
 							<string key="name">window</string>
-							<string key="candidateClassName">progressWindow</string>
+							<string key="candidateClassName">ProgressWindow</string>
 						</object>
 					</dictionary>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">../progressWindow.h</string>
+						<string key="minorKey">../ProgressWindow.h</string>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
-					<string key="className">progressWindow</string>
-					<dictionary class="NSMutableDictionary" key="actions">
-						<string key="btn_Cancela:">id</string>
-						<string key="btn_actCancela:">id</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="actionInfosByName">
-						<object class="IBActionInfo" key="btn_Cancela:">
-							<string key="name">btn_Cancela:</string>
+					<string key="className">ProgressWindow</string>
+					<object class="NSMutableDictionary" key="actions">
+						<string key="NS.key.0">btn_actCancelar:</string>
+						<string key="NS.object.0">id</string>
+					</object>
+					<object class="NSMutableDictionary" key="actionInfosByName">
+						<string key="NS.key.0">btn_actCancelar:</string>
+						<object class="IBActionInfo" key="NS.object.0">
+							<string key="name">btn_actCancelar:</string>
 							<string key="candidateClassName">id</string>
 						</object>
-						<object class="IBActionInfo" key="btn_actCancela:">
-							<string key="name">btn_actCancela:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-					</dictionary>
+					</object>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">../progressWindow.m</string>
+						<string key="minorKey">../ProgressWindow.m</string>
 					</object>
 				</object>
 			</array>
@@ -366,5 +403,9 @@
 		</object>
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
+		<object class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
+			<string key="NS.key.0">icon</string>
+			<string key="NS.object.0">{512, 512}</string>
+		</object>
 	</data>
 </archive>

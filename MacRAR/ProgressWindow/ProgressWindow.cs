@@ -6,19 +6,19 @@ using AppKit;
 
 namespace MacRAR
 {
-	public partial class progressWindow : NSPanel 
+	public partial class ProgressWindow : NSPanel
 	{
 		#region Constructors
 
 		// Called when created from unmanaged code
-		public progressWindow (IntPtr handle) : base (handle)
+		public ProgressWindow (IntPtr handle) : base (handle)
 		{
 			Initialize ();
 		}
 
 		// Called when created directly from a XIB file
 		[Export ("initWithCoder:")]
-		public progressWindow (NSCoder coder) : base (coder)
+		public ProgressWindow (NSCoder coder) : base (coder)
 		{
 			Initialize ();
 		}

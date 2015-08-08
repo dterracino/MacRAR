@@ -3,7 +3,7 @@ using System.IO;
 
 using Foundation;
 using AppKit;
-using System.Collections.Generic ;
+using System.Collections.Generic;
 
 namespace MacRAR
 {
@@ -23,6 +23,10 @@ namespace MacRAR
 					t.StandardOutput = pipeOut;
 					t.Launch ();
 					ViewArquivosDataSource datasource = new ViewArquivosDataSource ();
+
+					var sheet = new ProgressWindowController  ();
+					sheet.ShowSheet (window);
+
 					do {
 						NSDate DateLoop = new NSDate ();
 						DateLoop = DateLoop.AddSeconds (0.1);
@@ -52,12 +56,23 @@ namespace MacRAR
 								pos = 0;
 							} while (true);
 							if (nomes.Count > 0) {
+
+								sheet.ProgressBarMinValue = 0;
+								sheet.ProgressBarMaxValue = nomes.Count;
+								double conta = 0;
+
 								foreach (string nome in nomes) {
+
 									clsViewArquivos viewArquivos = new clsViewArquivos ();
 									string[] colunas = nome.Split ('\n');
 									string tipo = colunas [1].Substring (colunas [1].IndexOf (":") + 1).Trim();
 									viewArquivos.Nome = colunas [0].Substring (colunas [0].IndexOf (":") + 1).Trim();
 									viewArquivos.Tipo = colunas [1].Substring (colunas [1].IndexOf (":") + 1).Trim();
+
+									++conta;
+									sheet.LabelArqValue = viewArquivos.Nome;
+									sheet.ProgressBarValue = conta;
+
 									if (tipo == "File") {
 										viewArquivos.Tamanho = colunas [2].Substring (colunas [2].IndexOf (":") + 1).Trim();
 										viewArquivos.Compactado = colunas [3].Substring (colunas [3].IndexOf (":") + 1).Trim();
@@ -93,6 +108,10 @@ namespace MacRAR
 							alert.RunSheetModal (window);
 						}
 					} while(t.IsRunning);
+
+					sheet.CloseSheet ();
+					sheet = null;
+
 					pipeOut.Dispose ();
 					pipeOut = null;
 					TableView.DataSource = datasource;

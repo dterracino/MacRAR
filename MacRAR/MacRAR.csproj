@@ -85,17 +85,17 @@
     <Compile Include="ConfigWindow\ConfigWindowController.cs" />
     <Compile Include="ActivatableItem.cs" />
     <Compile Include="clsRAR.cs" />
-    <Compile Include="ProgressWindow\progressWindow.cs" />
-    <Compile Include="ProgressWindow\progressWindow.designer.cs">
-      <DependentUpon>progressWindow.cs</DependentUpon>
+    <Compile Include="ProgressWindow\ProgressWindow.cs" />
+    <Compile Include="ProgressWindow\ProgressWindow.designer.cs">
+      <DependentUpon>ProgressWindow.cs</DependentUpon>
     </Compile>
-    <Compile Include="ProgressWindow\progressWindowController.cs" />
+    <Compile Include="ProgressWindow\ProgressWindowController.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="MainWindow.xib" />
     <InterfaceDefinition Include="MainMenu.xib" />
     <InterfaceDefinition Include="ConfigWindow\ConfigWindow.xib" />
-    <InterfaceDefinition Include="ProgressWindow\progressWindow.xib" />
+    <InterfaceDefinition Include="ProgressWindow\ProgressWindow.xib" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
