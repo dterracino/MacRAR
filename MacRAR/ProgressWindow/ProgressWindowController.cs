@@ -39,7 +39,7 @@ namespace MacRAR
 		{
 			Canceled = true;
 			this.CloseSheet();
-			this.RaiseProgressCanceled ();
+//			this.RaiseProgressCanceled ();
 		}
 
 		public string LabelArqValue {
@@ -67,14 +67,14 @@ namespace MacRAR
 			set { this.pgr_outProgressBar.Indeterminate = value; }
 		}
 
-		public delegate void ProgressWindowCanceledDelegate();
-		public event ProgressWindowCanceledDelegate ProgressCanceled;
-
-		internal void RaiseProgressCanceled() {
-			if (this.ProgressCanceled != null) {
-				this.ProgressCanceled();
-			}
-		}
+//		public delegate void ProgressWindowCanceledDelegate();
+//		public event ProgressWindowCanceledDelegate ProgressCanceled;
+//
+//		internal void RaiseProgressCanceled() {
+//			if (this.ProgressCanceled != null) {
+//				this.ProgressCanceled();
+//			}
+//		}
 
 	}
 }

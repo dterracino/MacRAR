@@ -171,15 +171,29 @@ namespace MacRAR
 							var urlString = dlg.Url.Path;
 							if(!string.IsNullOrEmpty(urlString))
 							{
-								clsRAR orar = new clsRAR();
-								orar.OpenRAR(urlString, this, this.tbv_Arquivos);
-								orar=null;
+								
+								//NSDate DateLoop = new NSDate ();
+								//DateLoop = DateLoop.AddSeconds (0.1);
+								//NSRunLoop.Current.RunUntil(DateLoop );
+
+								System.Threading.Tasks.Task.Factory.StartNew (() => {
+									clsRAR orar = new clsRAR();
+									orar.OpenRAR(urlString, this, this.tbv_Arquivos);
+									orar=null;
+									 
+								});
+							
+//								clsRAR orar = new clsRAR();
+//								orar.OpenRAR(urlString, this, this.tbv_Arquivos);
+//								orar=null;
+
 							}
 						}
 					}
 					finally
 					{
 						dlg.Dispose();
+						dlg = null;
 					}
 				});
 			} else {

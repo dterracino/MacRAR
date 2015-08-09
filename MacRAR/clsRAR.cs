@@ -4,6 +4,7 @@ using System.IO;
 using Foundation;
 using AppKit;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace MacRAR
 {
@@ -24,25 +25,50 @@ namespace MacRAR
 					t.Launch ();
 					ViewArquivosDataSource datasource = new ViewArquivosDataSource ();
 
-					var sheet = new ProgressWindowController  ();
-					sheet.ShowSheet (window);
+					ProgressWindowController sheet = null;
+					NSApplication.SharedApplication.InvokeOnMainThread (() => {
+						sheet = new ProgressWindowController  ();
+						sheet.ShowSheet (window);
+
+					});
+
+//					ProgressWindowController sheet = new ProgressWindowController  ();
+//					sheet.ShowSheet (window);
+
+					bool Cancela = false;
 
 					do {
-						NSDate DateLoop = new NSDate ();
-						DateLoop = DateLoop.AddSeconds (0.1);
-						NSRunLoop.Current.RunUntil(DateLoop);
+//						NSDate DateLoop = new NSDate ();
+//						DateLoop = DateLoop.AddSeconds (0.1);
+//						NSRunLoop.Current.RunUntil(DateLoop);
 						string txtRET = pipeOut.ReadHandle.ReadDataToEndOfFile ().ToString ();
 						int pos = txtRET.IndexOf ("Name:");
 						if (pos > 0) {
-							if(!TableView.Enabled) {
-								TableView.Enabled = true;
-								TableView.Hidden = false;
-								window.tb_outAdicionarActive = true;
-								window.tb_outAtualizarActive = true;
-								window.tb_outExtrairActive = true;
-								window.tb_outRemoverActive = true;
-								window.tb_outDesfazerActive = true;
-							}
+
+							//InvokeOnMainThread
+
+							NSApplication.SharedApplication.InvokeOnMainThread (() => {
+								if(!TableView.Enabled) {
+									TableView.Enabled = true;
+									TableView.Hidden = false;
+									window.tb_outAdicionarActive = true;
+									window.tb_outAtualizarActive = true;
+									window.tb_outExtrairActive = true;
+									window.tb_outRemoverActive = true;
+									window.tb_outDesfazerActive = true;
+								}
+							});
+
+//							if(!TableView.Enabled) {
+//								TableView.Enabled = true;
+//								TableView.Hidden = false;
+//								window.tb_outAdicionarActive = true;
+//								window.tb_outAtualizarActive = true;
+//								window.tb_outExtrairActive = true;
+//								window.tb_outRemoverActive = true;
+//								window.tb_outDesfazerActive = true;
+//							}
+
 							txtRET = txtRET.Substring (pos);
 							List<string> nomes = new List<string>();
 							do {
@@ -57,9 +83,19 @@ namespace MacRAR
 							} while (true);
 							if (nomes.Count > 0) {
 
-								sheet.ProgressBarMinValue = 0;
-								sheet.ProgressBarMaxValue = nomes.Count;
+								NSApplication.SharedApplication.InvokeOnMainThread (() => {
+									sheet.ProgressBarMinValue = 0;
+									sheet.ProgressBarMaxValue = nomes.Count;
+
+								});
+
+//								sheet.ProgressBarMinValue = 0;
+//								sheet.ProgressBarMaxValue = nomes.Count;
+
 								double conta = 0;
+
+
+
 
 								foreach (string nome in nomes) {
 
@@ -70,8 +106,14 @@ namespace MacRAR
 									viewArquivos.Tipo = colunas [1].Substring (colunas [1].IndexOf (":") + 1).Trim();
 
 									++conta;
-									sheet.LabelArqValue = viewArquivos.Nome;
-									sheet.ProgressBarValue = conta;
+
+									NSApplication.SharedApplication.InvokeOnMainThread (() => {
+										sheet.LabelArqValue = "Processando arquivo: " + viewArquivos.Nome;
+										sheet.ProgressBarValue = conta;
+									});
+
+//									sheet.LabelArqValue = viewArquivos.Nome;
+//									sheet.ProgressBarValue = conta;
 
 									if (tipo == "File") {
 										viewArquivos.Tamanho = colunas [2].Substring (colunas [2].IndexOf (":") + 1).Trim();
@@ -95,27 +137,66 @@ namespace MacRAR
 									viewArquivos.Tags = "0";
 									datasource.ViewArquivos.Add (viewArquivos);
 									viewArquivos = null;
+
+									NSApplication.SharedApplication.InvokeOnMainThread (() => {
+										Cancela = sheet.Canceled;
+									});
+
+									if(Cancela) {
+										break;
+									}
+
 								}
 							}
 						} else {
-							TableView.Enabled = false;
-							TableView.Hidden = true;
-							NSAlert alert = new NSAlert () {
-								AlertStyle = NSAlertStyle.Warning,
-								InformativeText = "Não foi possível processar o arquivo:\r\n" + path,
-								MessageText = "Abrir Arquivo", 
-							};
-							alert.RunSheetModal (window);
+
+							NSApplication.SharedApplication.InvokeOnMainThread (() => {
+								TableView.Enabled = false;
+								TableView.Hidden = true;
+								NSAlert alert = new NSAlert () {
+									AlertStyle = NSAlertStyle.Warning,
+									InformativeText = "Não foi possível processar o arquivo:\r\n" + path,
+									MessageText = "Abrir Arquivo", 
+								};
+								alert.RunSheetModal (window);
+							});
+
+//							TableView.Enabled = false;
+//							TableView.Hidden = true;
+//							NSAlert alert = new NSAlert () {
+//								AlertStyle = NSAlertStyle.Warning,
+//								InformativeText = "Não foi possível processar o arquivo:\r\n" + path,
+//								MessageText = "Abrir Arquivo", 
+//							};
+//							alert.RunSheetModal (window);
+
 						}
+
+						if(Cancela) {
+							break;
+						}
+
 					} while(t.IsRunning);
 
-					sheet.CloseSheet ();
-					sheet = null;
+					NSApplication.SharedApplication.InvokeOnMainThread (() => {
+						sheet.CloseSheet ();
+						sheet = null;
+					});
+
+//					sheet.CloseSheet ();
+//					sheet = null;
 
 					pipeOut.Dispose ();
 					pipeOut = null;
-					TableView.DataSource = datasource;
-					TableView.Delegate = new ViewArquivosDelegate (datasource);
+
+					NSApplication.SharedApplication.InvokeOnMainThread (() => {
+						TableView.DataSource = datasource;
+						TableView.Delegate = new ViewArquivosDelegate (datasource);
+					});
+
+//					TableView.DataSource = datasource;
+//					TableView.Delegate = new ViewArquivosDelegate (datasource);
+
 					t.Terminate ();
 					t.Dispose ();
 					t = null;

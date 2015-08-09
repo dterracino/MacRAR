@@ -62,7 +62,7 @@
 							<object class="NSTextFieldCell" key="NSCell" id="940371704">
 								<int key="NSCellFlags">67108864</int>
 								<int key="NSCellFlags2">272891904</int>
-								<string key="NSContents">Multiline Label</string>
+								<string key="NSContents"/>
 								<object class="NSFont" key="NSSupport" id="480372686">
 									<bool key="IBIsSystemFont">YES</bool>
 									<double key="NSSize">13</double>
@@ -133,6 +133,7 @@
 							<string key="NSFrame">{{446, 117}, {105, 32}}</string>
 							<reference key="NSSuperview" ref="270702977"/>
 							<reference key="NSWindow"/>
+							<reference key="NSNextKeyView" ref="464085070"/>
 							<string key="NSReuseIdentifierKey">_NS:9</string>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSButtonCell" key="NSCell" id="537723274">
@@ -157,6 +158,7 @@
 							<string key="NSFrame">{{25, 19}, {525, 20}}</string>
 							<reference key="NSSuperview" ref="270702977"/>
 							<reference key="NSWindow"/>
+							<reference key="NSNextKeyView"/>
 							<string key="NSReuseIdentifierKey">_NS:9</string>
 							<string key="NSHuggingPriority">{250, 250}</string>
 							<int key="NSpiFlags">16397</int>

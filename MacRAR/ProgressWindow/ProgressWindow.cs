@@ -26,6 +26,8 @@ namespace MacRAR
 		// Shared initialization code
 		void Initialize ()
 		{
+
+
 		}
 
 		#endregion
