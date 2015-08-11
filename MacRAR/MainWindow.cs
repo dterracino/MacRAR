@@ -180,13 +180,7 @@ namespace MacRAR
 									clsRAR orar = new clsRAR();
 									orar.OpenRAR(urlString, this, this.tbv_Arquivos);
 									orar=null;
-									 
 								});
-							
-//								clsRAR orar = new clsRAR();
-//								orar.OpenRAR(urlString, this, this.tbv_Arquivos);
-//								orar=null;
-
 							}
 						}
 					}

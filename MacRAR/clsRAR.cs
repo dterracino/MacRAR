@@ -26,14 +26,10 @@ namespace MacRAR
 					ViewArquivosDataSource datasource = new ViewArquivosDataSource ();
 
 					ProgressWindowController sheet = null;
-					NSApplication.SharedApplication.InvokeOnMainThread (() => {
+					TableView.InvokeOnMainThread (delegate {
 						sheet = new ProgressWindowController  ();
 						sheet.ShowSheet (window);
-
 					});
-
-//					ProgressWindowController sheet = new ProgressWindowController  ();
-//					sheet.ShowSheet (window);
 
 					bool Cancela = false;
 
@@ -47,7 +43,7 @@ namespace MacRAR
 
 							//InvokeOnMainThread
 
-							NSApplication.SharedApplication.InvokeOnMainThread (() => {
+							TableView.InvokeOnMainThread(delegate{
 								if(!TableView.Enabled) {
 									TableView.Enabled = true;
 									TableView.Hidden = false;
@@ -58,16 +54,6 @@ namespace MacRAR
 									window.tb_outDesfazerActive = true;
 								}
 							});
-
-//							if(!TableView.Enabled) {
-//								TableView.Enabled = true;
-//								TableView.Hidden = false;
-//								window.tb_outAdicionarActive = true;
-//								window.tb_outAtualizarActive = true;
-//								window.tb_outExtrairActive = true;
-//								window.tb_outRemoverActive = true;
-//								window.tb_outDesfazerActive = true;
-//							}
 
 							txtRET = txtRET.Substring (pos);
 							List<string> nomes = new List<string>();
@@ -83,19 +69,12 @@ namespace MacRAR
 							} while (true);
 							if (nomes.Count > 0) {
 
-								NSApplication.SharedApplication.InvokeOnMainThread (() => {
+								sheet.InvokeOnMainThread(delegate{
 									sheet.ProgressBarMinValue = 0;
 									sheet.ProgressBarMaxValue = nomes.Count;
-
 								});
 
-//								sheet.ProgressBarMinValue = 0;
-//								sheet.ProgressBarMaxValue = nomes.Count;
-
 								double conta = 0;
-
-
-
 
 								foreach (string nome in nomes) {
 
@@ -107,13 +86,15 @@ namespace MacRAR
 
 									++conta;
 
-									NSApplication.SharedApplication.InvokeOnMainThread (() => {
+									sheet.InvokeOnMainThread(delegate{
 										sheet.LabelArqValue = "Processando arquivo: " + viewArquivos.Nome;
 										sheet.ProgressBarValue = conta;
 									});
 
-//									sheet.LabelArqValue = viewArquivos.Nome;
-//									sheet.ProgressBarValue = conta;
+//									NSApplication.SharedApplication.InvokeOnMainThread (() => {
+//										sheet.LabelArqValue = "Processando arquivo: " + viewArquivos.Nome;
+//										sheet.ProgressBarValue = conta;
+//									});
 
 									if (tipo == "File") {
 										viewArquivos.Tamanho = colunas [2].Substring (colunas [2].IndexOf (":") + 1).Trim();
@@ -138,37 +119,27 @@ namespace MacRAR
 									datasource.ViewArquivos.Add (viewArquivos);
 									viewArquivos = null;
 
-									NSApplication.SharedApplication.InvokeOnMainThread (() => {
+									sheet.InvokeOnMainThread(delegate{
 										Cancela = sheet.Canceled;
 									});
-
 									if(Cancela) {
 										break;
 									}
-
 								}
 							}
 						} else {
 
-							NSApplication.SharedApplication.InvokeOnMainThread (() => {
+							TableView.InvokeOnMainThread (delegate {
 								TableView.Enabled = false;
 								TableView.Hidden = true;
+								sheet.CloseSheet();
 								NSAlert alert = new NSAlert () {
-									AlertStyle = NSAlertStyle.Warning,
+									AlertStyle = NSAlertStyle.Critical,
 									InformativeText = "Não foi possível processar o arquivo:\r\n" + path,
 									MessageText = "Abrir Arquivo", 
 								};
-								alert.RunSheetModal (window);
+								alert.RunSheetModal(window);
 							});
-
-//							TableView.Enabled = false;
-//							TableView.Hidden = true;
-//							NSAlert alert = new NSAlert () {
-//								AlertStyle = NSAlertStyle.Warning,
-//								InformativeText = "Não foi possível processar o arquivo:\r\n" + path,
-//								MessageText = "Abrir Arquivo", 
-//							};
-//							alert.RunSheetModal (window);
 
 						}
 
@@ -178,24 +149,18 @@ namespace MacRAR
 
 					} while(t.IsRunning);
 
-					NSApplication.SharedApplication.InvokeOnMainThread (() => {
+					sheet.InvokeOnMainThread (delegate {
 						sheet.CloseSheet ();
 						sheet = null;
 					});
 
-//					sheet.CloseSheet ();
-//					sheet = null;
-
 					pipeOut.Dispose ();
 					pipeOut = null;
 
-					NSApplication.SharedApplication.InvokeOnMainThread (() => {
+					TableView.InvokeOnMainThread (delegate {
 						TableView.DataSource = datasource;
 						TableView.Delegate = new ViewArquivosDelegate (datasource);
 					});
-
-//					TableView.DataSource = datasource;
-//					TableView.Delegate = new ViewArquivosDelegate (datasource);
 
 					t.Terminate ();
 					t.Dispose ();
