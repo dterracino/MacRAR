@@ -34,15 +34,9 @@ namespace MacRAR
 					bool Cancela = false;
 
 					do {
-//						NSDate DateLoop = new NSDate ();
-//						DateLoop = DateLoop.AddSeconds (0.1);
-//						NSRunLoop.Current.RunUntil(DateLoop);
 						string txtRET = pipeOut.ReadHandle.ReadDataToEndOfFile ().ToString ();
 						int pos = txtRET.IndexOf ("Name:");
 						if (pos > 0) {
-
-							//InvokeOnMainThread
-
 							TableView.InvokeOnMainThread(delegate{
 								if(!TableView.Enabled) {
 									TableView.Enabled = true;
@@ -170,6 +164,33 @@ namespace MacRAR
 			}
 			return path;
 		}
+
+		public void ExtractRAR(MainWindow  window, NSTableView TableView, string rarFile, string extractPath) {
+			clsIOPrefs ioPrefs = new clsIOPrefs ();
+			string txtRAR = ioPrefs.GetStringValue ("CaminhoRAR");
+			if (txtRAR.Length > 0) {
+				
+				NSIndexSet nSelRows = TableView.SelectedRows;
+				if (nSelRows.Count > 0) {
+					nuint[] nRows = nSelRows.ToArray ();
+					ViewArquivosDataSource datasource = (ViewArquivosDataSource)TableView.DataSource;
+					foreach (int lRow in nRows) {
+						string NomeArq = datasource.ViewArquivos [lRow].Nome;
+
+						string[] launchArgs = { "x", rarFile, NomeArq, extractPath };
+						NSPipe pipeOut = new NSPipe ();
+						NSTask t = new NSTask ();
+						t.LaunchPath = txtRAR;
+						t.Arguments = launchArgs;
+						t.StandardOutput = pipeOut;
+						t.Launch ();
+						while (t.IsRunning) {
+
+						}
+
+					}
+				}
+			}
+		}
 	}
 }
-

@@ -3,6 +3,7 @@
 using Foundation;
 using AppKit;
 using System.Collections.Generic;
+using System.Threading;
 
 namespace MacRAR
 {
@@ -176,11 +177,12 @@ namespace MacRAR
 								//DateLoop = DateLoop.AddSeconds (0.1);
 								//NSRunLoop.Current.RunUntil(DateLoop );
 
-								System.Threading.Tasks.Task.Factory.StartNew (() => {
+								NSThread.Start(()=> {
 									clsRAR orar = new clsRAR();
-									orar.OpenRAR(urlString, this, this.tbv_Arquivos);
+									rarFile = orar.OpenRAR(urlString, this, this.tbv_Arquivos);
 									orar=null;
 								});
+									
 							}
 						}
 					}
@@ -207,28 +209,39 @@ namespace MacRAR
 								aState = cvarqs.GetTagsArquivo (datasource, (int)lRow, 1);
 								break;
 							case 3:
+								NSOpenPanel dlg = NSOpenPanel.OpenPanel;
+								dlg.Title = "Salvar em";
+								dlg.CanChooseFiles = false;
+								dlg.CanChooseDirectories = true;
+								dlg.AllowsMultipleSelection=false;
+								dlg.ResolvesAliases=true;
+								dlg.ReleasedWhenClosed = true;
+								dlg.BeginSheet(this, (i) => { 
+									try
+									{
+										if(dlg.Url != null) {
+											clsRAR exRAR = new clsRAR ();
+											exRAR.ExtractRAR (this, this.tbv_Arquivos, rarFile, dlg.Url.Path);
+											exRAR = null;
+										}
+									} finally {
+										dlg.Dispose();
+										dlg = null;
+									}
+									this.tbv_Arquivos.ReloadData ();
+								});
 								break;
 							}
 							if(state != 3){
 								cvarqs.SetTagsArquivo (datasource, (int)lRow, aState);
-							}else {
-
-
-								//							clsOpenRAR orar = new clsOpenRAR();
-								//							orar.ExtractRAR(this, this.tbv_Arquivos);
-								//							orar=null;
+								cvarqs = null;
+								datasource = null;
+								this.tbv_Arquivos.ReloadData ();
 							}
-
-							//					clsViewArquivos clvarq = new clsViewArquivos();
-							//					clvarq.SetStateArquivo(tbv_Arquivos.GetRowView(lRow,false),(NSTableCellView)tbv_Arquivos.GetView(0,lRow,false),1);
-							//
-							//
-							//					clvarq=null;
-
 						}
-						cvarqs = null;
-						datasource = null;
-						this.tbv_Arquivos.ReloadData ();
+//						cvarqs = null;
+//						datasource = null;
+//						this.tbv_Arquivos.ReloadData ();
 					}
 				} else {
 					string mText = string.Empty;
