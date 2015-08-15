@@ -165,17 +165,44 @@ namespace MacRAR
 			return path;
 		}
 
-		public void ExtractRAR(MainWindow  window, NSTableView TableView, string rarFile, string extractPath) {
+        public void ExtractRAR(MainWindow  window, NSTableView TableView, NSIndexSet nSelRows, string rarFile, string extractPath) {
 			clsIOPrefs ioPrefs = new clsIOPrefs ();
 			string txtRAR = ioPrefs.GetStringValue ("CaminhoRAR");
 			if (txtRAR.Length > 0) {
 				
-				NSIndexSet nSelRows = TableView.SelectedRows;
 				if (nSelRows.Count > 0) {
+
+                    ProgressWindowController sheet = null;
+                    TableView.InvokeOnMainThread (delegate {
+                        sheet = new ProgressWindowController  ();
+                        sheet.ShowSheet (window);
+                    });
+
+                    sheet.InvokeOnMainThread(delegate{
+                        sheet.ProgressBarMinValue = 0;
+                        sheet.ProgressBarMaxValue = nSelRows.Count;
+                    });
+
+                    double conta = 0;
+                    bool Cancela = false;
+
 					nuint[] nRows = nSelRows.ToArray ();
-					ViewArquivosDataSource datasource = (ViewArquivosDataSource)TableView.DataSource;
+
+                    ViewArquivosDataSource datasource = null;
+                    TableView.InvokeOnMainThread(delegate
+                        {
+                            datasource = (ViewArquivosDataSource)TableView.DataSource;
+                        });
+					
 					foreach (int lRow in nRows) {
 						string NomeArq = datasource.ViewArquivos [lRow].Nome;
+
+                        ++conta;
+
+                        sheet.InvokeOnMainThread(delegate{
+                            sheet.LabelArqValue = "Extraindo arquivo: " + NomeArq;
+                            sheet.ProgressBarValue = conta;
+                        });
 
 						string[] launchArgs = { "x", rarFile, NomeArq, extractPath };
 						NSPipe pipeOut = new NSPipe ();
@@ -184,11 +211,37 @@ namespace MacRAR
 						t.Arguments = launchArgs;
 						t.StandardOutput = pipeOut;
 						t.Launch ();
-						while (t.IsRunning) {
+                        t.WaitUntilExit();
 
-						}
+                        //string txtRET = pipeOut.ReadHandle.ReadDataToEndOfFile ().ToString ();
 
-					}
+                        sheet.InvokeOnMainThread(delegate{
+                            Cancela = sheet.Canceled;
+                        });
+                        if(Cancela) {
+                            break;
+                        }
+
+                    }
+
+                    sheet.InvokeOnMainThread (delegate {
+                        sheet.CloseSheet ();
+                        sheet = null;
+                    });
+
+                    if (!Cancela)
+                    {
+                        TableView.InvokeOnMainThread (delegate {
+                            NSAlert alert = new NSAlert () {
+                                AlertStyle = NSAlertStyle.Informational,
+                                InformativeText = "Arquivo(s) extraido(s) com sucesso !",
+                                MessageText = "Extrair Arquivos", 
+                            };
+                            alert.RunSheetModal(window);
+                        });
+
+                    }
+
 				}
 			}
 		}

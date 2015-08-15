@@ -217,13 +217,16 @@ namespace MacRAR
 								dlg.ResolvesAliases=true;
 								dlg.ReleasedWhenClosed = true;
 								dlg.BeginSheet(this, (i) => { 
-									try
-									{
-										if(dlg.Url != null) {
-											clsRAR exRAR = new clsRAR ();
-											exRAR.ExtractRAR (this, this.tbv_Arquivos, rarFile, dlg.Url.Path);
-											exRAR = null;
-										}
+									try {
+                                        string urlString = dlg.Url.Path;
+                                        if(!string.IsNullOrEmpty(urlString)) {
+                                        nSelRows = this.tbv_Arquivos.SelectedRows;
+                                        NSThread.Start(()=> {
+                                            clsRAR exRAR = new clsRAR ();
+                                            exRAR.ExtractRAR (this, this.tbv_Arquivos, nSelRows, rarFile, urlString);
+                                            exRAR = null;
+                                        });
+									}
 									} finally {
 										dlg.Dispose();
 										dlg = null;

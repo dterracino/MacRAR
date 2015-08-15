@@ -32,5 +32,20 @@
 	<string>NSApplication</string>
 	<key>LSApplicationCategoryType</key>
 	<string>public.app-category.utilities</string>
+	<key>CFBundleDocumentTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeExtensions</key>
+			<array>
+				<string>rar</string>
+			</array>
+			<key>NSDocumentClass</key>
+			<string>NSDocument</string>
+			<key>CFBundleTypeRole</key>
+			<string>None</string>
+			<key>CFBundleTypeIconFile</key>
+			<string>icon</string>
+		</dict>
+	</array>
 </dict>
 </plist>
