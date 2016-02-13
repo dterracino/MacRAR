@@ -235,7 +235,7 @@ namespace MacRAR
                             NSAlert alert = new NSAlert () {
                                 AlertStyle = NSAlertStyle.Informational,
                                 InformativeText = "Arquivo(s) extraido(s) com sucesso !",
-                                MessageText = "Extrair Arquivos", 
+                                MessageText = "Extrair arquivos", 
                             };
                             alert.RunSheetModal(window);
                         });

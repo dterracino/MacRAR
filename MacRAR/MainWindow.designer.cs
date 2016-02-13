@@ -13,9 +13,6 @@ namespace MacRAR
 	partial class MainWindow
 	{
 		[Outlet]
-		AppKit.NSProgressIndicator hpb_ProgressBar { get; set; }
-
-		[Outlet]
 		MacRAR.ActivatableItem tb_outAdicionar { get; set; }
 
 		[Outlet]
@@ -92,11 +89,6 @@ namespace MacRAR
 		
 		void ReleaseDesignerOutlets ()
 		{
-			if (hpb_ProgressBar != null) {
-				hpb_ProgressBar.Dispose ();
-				hpb_ProgressBar = null;
-			}
-
 			if (tb_outAdicionar != null) {
 				tb_outAdicionar.Dispose ();
 				tb_outAdicionar = null;

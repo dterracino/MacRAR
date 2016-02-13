@@ -16,7 +16,6 @@
 			<string>NSCustomObject</string>
 			<string>NSImageCell</string>
 			<string>NSImageView</string>
-			<string>NSProgressIndicator</string>
 			<string>NSScrollView</string>
 			<string>NSScroller</string>
 			<string>NSTableCellView</string>
@@ -1264,7 +1263,7 @@
 							<string key="NSFrame">{{501, 22}, {87, 17}}</string>
 							<reference key="NSSuperview" ref="312036702"/>
 							<reference key="NSWindow"/>
-							<reference key="NSNextKeyView" ref="961656179"/>
+							<reference key="NSNextKeyView"/>
 							<string key="NSReuseIdentifierKey">_NS:526</string>
 							<string key="NSHuggingPriority">{251, 750}</string>
 							<bool key="NSEnabled">YES</bool>
@@ -1339,18 +1338,6 @@
 								<int key="NSPeriodicInterval">25</int>
 							</object>
 							<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
-						</object>
-						<object class="NSProgressIndicator" id="961656179">
-							<reference key="NSNextResponder" ref="312036702"/>
-							<int key="NSvFlags">-2147483392</int>
-							<string key="NSFrame">{{8, -12}, {734, 20}}</string>
-							<reference key="NSSuperview" ref="312036702"/>
-							<reference key="NSWindow"/>
-							<reference key="NSNextKeyView"/>
-							<string key="NSReuseIdentifierKey">_NS:9</string>
-							<string key="NSHuggingPriority">{250, 250}</string>
-							<int key="NSpiFlags">16399</int>
-							<double key="NSMaxValue">100</double>
 						</object>
 					</array>
 					<string key="NSFrameSize">{751, 370}</string>
@@ -1496,14 +1483,6 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBActionConnection" key="connection">
-						<string key="label">tb_ActExtrair:</string>
-						<reference key="source" ref="748157544"/>
-						<reference key="destination" ref="313146240"/>
-					</object>
-					<int key="connectionID">191</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
 						<string key="label">tb_actRemover:</string>
 						<reference key="source" ref="748157544"/>
 						<reference key="destination" ref="96432417"/>
@@ -1584,11 +1563,19 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
-						<string key="label">hpb_ProgressBar</string>
+						<string key="label">tb_OutExtrair</string>
 						<reference key="source" ref="748157544"/>
-						<reference key="destination" ref="961656179"/>
+						<reference key="destination" ref="313146240"/>
 					</object>
-					<int key="connectionID">236</int>
+					<int key="connectionID">237</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">tb_ActExtrair:</string>
+						<reference key="source" ref="748157544"/>
+						<reference key="destination" ref="313146240"/>
+					</object>
+					<int key="connectionID">238</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
@@ -1719,7 +1706,6 @@
 							<reference ref="458178380"/>
 							<reference ref="27448279"/>
 							<reference ref="1048303087"/>
-							<reference ref="961656179"/>
 						</array>
 						<reference key="parent" ref="748157544"/>
 					</object>
@@ -2287,11 +2273,6 @@
 						<reference key="object" ref="613309579"/>
 						<reference key="parent" ref="6565771"/>
 					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">235</int>
-						<reference key="object" ref="961656179"/>
-						<reference key="parent" ref="312036702"/>
-					</object>
 				</array>
 			</object>
 			<dictionary class="NSMutableDictionary" key="flattenedProperties">
@@ -2395,7 +2376,6 @@
 				<string key="160.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="161.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="162.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="187.CustomClassName">ActivatableItem</string>
 				<string key="187.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="188.CustomClassName">ActivatableItem</string>
 				<string key="188.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -2405,7 +2385,7 @@
 				<string key="197.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<boolean value="YES" key="2.IBNSWindowAutoPositionCentersHorizontal"/>
 				<boolean value="YES" key="2.IBNSWindowAutoPositionCentersVertical"/>
-				<string key="2.IBPersistedLastKnownCanvasPosition">{491.5, 289}</string>
+				<string key="2.IBPersistedLastKnownCanvasPosition">{601.5, 336}</string>
 				<string key="2.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="2.IBWindowTemplateEditedContentRect">{{319, 371}, {606, 354}}</string>
 				<boolean value="YES" key="2.NSWindowTemplate.visibleAtLaunch"/>
@@ -2427,7 +2407,6 @@
 				<string key="221.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="223.CustomClassName">ActivatableItem</string>
 				<string key="223.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="235.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<dictionary class="NSMutableDictionary" key="3.IBAttributePlaceholdersKey"/>
 				<reference key="3.IBNSViewMetadataGestureRecognizers" ref="0"/>
 				<string key="3.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -2443,7 +2422,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">236</int>
+			<int key="maxID">238</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -2508,7 +2487,6 @@
 						</object>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="outlets">
-						<string key="hpb_ProgressBar">NSProgressIndicator</string>
 						<string key="tb_outAdicionar">ActivatableItem</string>
 						<string key="tb_outAtualizar">ActivatableItem</string>
 						<string key="tb_outDesfazer">ActivatableItem</string>
@@ -2527,10 +2505,6 @@
 						<string key="tbv_ColumnTipo">NSTableColumn</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<object class="IBToOneOutletInfo" key="hpb_ProgressBar">
-							<string key="name">hpb_ProgressBar</string>
-							<string key="candidateClassName">NSProgressIndicator</string>
-						</object>
 						<object class="IBToOneOutletInfo" key="tb_outAdicionar">
 							<string key="name">tb_outAdicionar</string>
 							<string key="candidateClassName">ActivatableItem</string>

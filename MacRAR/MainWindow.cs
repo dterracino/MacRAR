@@ -127,7 +127,7 @@ namespace MacRAR
 
 		partial void tb_ActAdicionar (NSObject sender)
 		{
-			
+            this.procBtn(5);
 		}
 
 		partial void tb_ActExtrair (NSObject sender)
@@ -137,7 +137,7 @@ namespace MacRAR
 
 		partial void tb_actAtualizar (NSObject sender)
 		{
-	
+	// 6
 		}
 
 
@@ -234,6 +234,9 @@ namespace MacRAR
 									this.tbv_Arquivos.ReloadData ();
 								});
 								break;
+                            case 5:
+                                    
+                                break;
 							}
 							if(state != 3){
 								cvarqs.SetTagsArquivo (datasource, (int)lRow, aState);
@@ -242,9 +245,6 @@ namespace MacRAR
 								this.tbv_Arquivos.ReloadData ();
 							}
 						}
-//						cvarqs = null;
-//						datasource = null;
-//						this.tbv_Arquivos.ReloadData ();
 					}
 				} else {
 					string mText = string.Empty;
